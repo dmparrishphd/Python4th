@@ -1,0 +1,281 @@
+                          PYTHON 4-TH
+                           "ARIADNE"
+                          USER MANUAL
+
+
+
+             Copyright (C) D. Michael Parrish 2019
+
+         Permissions for cover art granted according to
+                      CC BY-ND 4.0 license
+         https://creativecommons.org/licenses/by-nd/4.0
+
+           Permissions for text granted according to
+                      CC BY-SA 4.0 license
+         https://creativecommons.org/licenses/by-sa/4.0
+
+
+
+PREFACE
+
+Except for the entry for { /MOD }, the author has brought forth
+this entire manual from memory in one evening after work, while
+in the same evening having bicycled to and from the laundry
+after a day's work, eaten supper, and still got to bed on time.
+That is how simple Forth is: you can hold it in your head all at
+once.
+
+
+
+LIST OF ACRONYMS
+
+
+TOS     Top of Stack*
+
+SOS     Second item on Stack*
+
+3OS     Third item on stack, fourth item, etc.*
+4OS
+etc.
+
+TOD     Top of Dictionary*
+
+________
+* Refers either to the location or the value found there,
+depending upon context.
+
+
+
+TABLE OF FORTH WORDS
+________________________________________________________________
+
+When encountered, a word in the left column has the effect
+described at right.
+________________________________________________________________
+
+                     STORAGE AND RETRIEVAL
+________________________________________________________________
+
+@       extracts the value from the container at TOS
+
+!       stores the item at TOS in the container at SOS.
+________________________________________________________________
+
+                             LOGIC
+________________________________________________________________
+
+AND     returns the result of logical and between TOS and SOS.
+
+EOR     computes logical exclusive OR between SOS and TOS and
+        returns the result.
+
+NOT     returns the logical negation of TOS by flipping all
+        bits.
+
+OR      computes logical OR between SOS and TOS and returns the
+        result.
+
+DEMOTE  converts TOS to a flag: all bits off (integer 0) for
+        false and all bits on (integer -1) for true.  False maps
+        to zero for a wide array of other computer languages
+        (including Python 3). Negative one corresponds with all
+        bits nonzero, or the opposite of zero, under two's
+        complement binary representation.
+________________________________________________________________
+
+                           ARITHMETIC
+________________________________________________________________
+
+0<      returns a flag indicating whether TOS is less than zero.
+
+<       returns a flag that indicates whether SOS is less than
+        TOS.
+
+==      returns a flag telling whether SOS and TOS are equal.
+        This word is analogous to Python 3 ==.
+
++       returns the sum of SOS and TOS
+
+1+      adds one to TOS.
+
+-       negates TOS. Not to be confused with { -- }.
+
+--      subtracts TOS from SOS and returns the result. Not to be
+        confused with { - }.
+
+/MOD    returns the quotient and remainder of SOS and TOS.
+
+/       returns the quotient of SOS and TOS.
+
+MOD     returns the modulus (the remainder of division) of SOS
+        and TOS.
+
+*/      divides the product of 3OS and SOS by TOS and returns
+        both the quotient and remainder.
+
+ABS     returns the absolute value of TOS.
+
+MAX     returns the maximum of SOS and TOS
+
+MIN     returns the minimum of SOS and TOS.
+
+DIGIT   return a character that may represent the numeric value
+        at TOS. The values 0 through 9 correspond with
+        characters '0' through '9', while values 10 through 36
+        correspond with 'A' through 'Z'.
+
+STR     converts TOS into a string. STR is analogous to Python 3
+        str.
+________________________________________________________________
+
+                            STRINGS
+________________________________________________________________
+
+EMIT    prints the string at TOS. (No padding is printed before
+        and no newline printed afterwards.)
+
+.       prints a space, followed by TOS. Compare with EMIT.
+
+LEN     returns the length of TOS. It is analogous to Python 3
+        len.
+
+RUB     removes the first character from the string at TOS. RUB
+        is used by { , } and { ,, }.
+
+BL      places a space, or blank, at TOS
+
+CHR     returns the character that TOS is mapped to. Not all
+        integers map to a Unicode Character.
+
+##      attempts to convert TOS to an integer (Python 3 int). ##
+        returns two values: at SOS, the converted value; at TOS
+        a flag indicating whether conversion succeeded (false
+        indicates success or no error).
+________________________________________________________________
+
+                       STACK MANIPULATION
+                               OR
+                        "STACKROBATICS"
+________________________________________________________________
+
+BACK    moves TOS to another, hidden stack. Call it a side
+        stack.  BACK is an alternative to >R "to R" of
+        conventional Forth, which moves TOS to the Return stack.
+        FORTH and BACK are opposites.
+
+FORTH   brings forth the item on the top of the back stack,
+        placing it at TOS. BACK and FORTH are opposites.
+
+DUP     makes a copy of TOS. After DUP is finished, SOS and TOS
+        should be identical.
+
+DROP    removes TOS from the Stack. It is somewhat analogous to
+        Python 3 list.pop, except that no value is returned.
+
+OVER    copies SOS to TOS. On completion, the old TOS is at SOS
+        and the old SOS is at 3OS.
+________________________________________________________________
+
+           COMPUTER AND COMPUTER NETWORK MANAGEMENT*
+________________________________________________________________
+
+BYE     stops the current computer and brings up the next one in
+        the ring. Exception: the master node is not stopped by
+        BYE.
+
+HALT    places the current computer in a halt state and brings
+        up the next computer in the ring.
+
+TTFN    "That's ta-ta for now." The present computer is put to
+        sleep and the next one in the ring is brought forth to
+        be interacted with.
+
+REVISIT returns to the previous computer on the ring. REVISIT
+        and TTFN can be used to switch back and forth between
+        two computers.
+
+NEIGHBORS identifies all of the computers with a printout to the
+        screen. A future version will allow switching to one of
+        the neighbors by name.
+________________________________________________________________
+
+                       LANGUAGE EXTENSION
+________________________________________________________________
+
+LOAD    reads the entire file whose name is at TOS. The contents
+        of the file are interpreted as if they had been typed in
+        manually.
+
+LINK    creates a new Dictionary entry. Neither CODE nor DATA
+        are assigned. See the definitions of CONSTANT, VARIABLE,
+        and 2VARIABLE for examples.
+
+,       removes the first character from the string at TOS and
+        places the result at the end of the DATA value of the
+        current Dictionary entry.
+
+,,      moves the codeword at TOS to the CODE portion of the
+        current entry.
+
+:       creates a new Dictionary entry. The name is popped from
+        the Stack.
+
+;       completes the word currently being defined. This
+        includes reversing the order of the items in the DATA
+        portion of the entry, where the constituent words of :
+        word are held.
+
+SNIP    removes the last entry of the Dictionary. It is a simple
+        "undo."
+
+SEE     (This word failed during testing. It is intended to
+        display the definition of a word.)
+
+WORDS   prints the Dictionary words, followed by newline.
+
+FIND    returns the entry corresponding with TOS.
+
+HERE    returns TOD. There are planned facilities for
+        manipulating TOD.
+________________________________________________________________
+
+                          FLOW CONTROL
+________________________________________________________________
+
+EXECUTE executes the word found at TOS.
+
+IF      continues interpreting the present word provided that
+        TOS is true (nonzero); otherwise, interpretation of the
+        present word ends. IF and EBB are somewhat opposite.
+
+EBB     set the program counter to the beginning of the word
+        presently being interpreted. EBB is designed for
+        application within colon words. IF and EBB are somewhat
+        opposites; used together, they can stand for a
+        conventional "while" or "for" loop.
+
+QUERY   requests input from the user. Ideally, this word can be
+        used within the definitions of other words. However,
+        QUERY should be considered experimental in this version.
+
+DOLST   is a codeword that does the work of words defined with
+        { : }. There may or may not be other useful applications.
+
+DOVAR   is a codeword that does the work of variables, placing a
+        variable at TOS. It's design is as the code for
+        VARIABLE. Other uses may or may not be beneficial.
+
+DOCON   is a codeword that does the work of constants, placing a
+        constant's value at TOS. It's design is as the code for
+        CONSTANT. Other uses may or may not be beneficial.
+________________________________________________________________
+
+                           LOW-LEVEL
+________________________________________________________________
+
+EVAL    evaluates TOS, placing the result at TOS. It is
+        analogous to Python 3 eval, and operates almost
+        identically.
+
+NOP     does nothing except waste time---no operation---can be
+        used for certain tests, as a placeholder, etc.
