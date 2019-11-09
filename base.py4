@@ -1,0 +1,18 @@
+2BACK : `BACK , `BACK , ;
+2FORTH : `FORTH , `FORTH , ;
+SWAP : `OVER , `2BACK , `DROP , `2FORTH , ;
+ROT : `BACK , `SWAP , `FORTH , `SWAP , ;
+EYE : `RUB , `SEE , ;
+2DROP : `DROP , `DROP , ;
+2DUP : `OVER , `OVER , ;
+# : `## , `DROP , ;
+.CLEAR : `DEPTH , `IF , `DROP , `EBB , ;
+CLEAR : `.CLEAR , `DROP , ;
+CONSTANT : `LINK , `DOCON , `,, , `, , ;
+VARIABLE : `LINK , `DOVAR , `,, , `, , ;
+2VARIABLE : `LINK , `DOVAR , `,, , `, , `, , ;
+? : `@ , `. , ;
+SPACE : `BL , `EMIT , ;
+@NL : `10 , `# , `CHR , ;
+NL : `@NL , `EMIT , ;
+
