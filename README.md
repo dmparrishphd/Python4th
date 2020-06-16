@@ -4,7 +4,7 @@ Forth, written in Python 3. Goals: low barrier to entry, extreme simplicity.
 
 ## Ariadne IIa
 
-Pre-release of July "Forth" 2020 edition.
+[Pre-release](https://github.com/dmparrishphd/Python4th/tree/master/2a) of July "Forth" 2020 edition.
 
 Accompanies ["Why can't Python deepcopy stdin?"](https://stackoverflow.com/questions/62373655/why-cant-python-deepcopy-stdin)
 
