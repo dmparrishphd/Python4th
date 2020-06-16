@@ -2,24 +2,22 @@
 
 Forth, written in Python 3. Goals: low barrier to entry, extreme simplicity.
 
-## Initial Release: Ariadne
+## Ariadne IIa
+
+Pre-release of July "Forth" 2020 edition.
+
+Accompanies ["Why can't Python deepcopy stdin?"](https://stackoverflow.com/questions/62373655/why-cant-python-deepcopy-stdin)
 
 ### To Run
 
-Launch Python 3 from the directory containing 4.py and goforth.py.
-
-Enter `exec(open('goforth.py').read())`
+See the example at the top of the [source code](https://github.com/dmparrishphd/Python4th/blob/master/2a/ariadne2a.py).
 
 ### Known Issues
 
-The argument order an/or order of returned items might be backwards in some cases.
+Ariadne IIa is barely tested. The basic operations like `DUP`, `DROP`, and `OVER` seem to work, as do the two compilers (`:;` and the tripple `:`, \`, `;`).
 
-The emulation of the computer network is incomplete.
-
-It is easy to crash. (On crash, will kick you out into familar Python 3 prompt; CTRL+C should have same effect).
+A lot of essential features are yet to be incorporated (one development goal was to get the compiler working as soon as possible).
 
 ## Next Release
 
-Should be more forgiving.
-
-Will likely be incompatible in some important ways.
+Ariadne II (without the "a") should have a more complete set of features, and should be more thoroughly tested.
