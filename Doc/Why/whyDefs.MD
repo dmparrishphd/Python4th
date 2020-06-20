@@ -17,6 +17,6 @@ You can write a defintion that does nothing in Forth using only three symbols:
 
     doNothing : ;
     
-Discounting the name, _Python is three times more wasteful_ than Forth (6 symbols vs. 2) in this case.
+Discounting the name, _Python is three times more wasteful_ than Forth in this case (6 symbols vs. 2).
     
-([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyPython.MD))
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/whyPython.MD))
