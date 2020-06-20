@@ -9,9 +9,7 @@ This is just about the simplest definition you can write in Pytyon:
     def doNothing():
         pass
         
-In other words, it requires seven symbols {`def`}{`doNothing`}{`(`}{`)`}{`:`}{`<indentation>`}{`pass`} to make a defintion that does nothing (except waste time). And, yes I count `<indentation>` as a symbol, because it is required by the Python grammar.
-
-**Python requires invisible symbols!**
+In other words, it requires seven symbols {`def`}{`doNothing`}{`(`}{`)`}{`:`}{`<indentation>`}{`pass`} to make a defintion that does nothing (except waste time). And, yes I count `<indentation>` as a symbol, because it is required by the Python grammar. (Python requires _invisible_ symbols!)
 
 ### The Forth Way
 
