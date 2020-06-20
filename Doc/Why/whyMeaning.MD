@@ -19,7 +19,7 @@ If you want to understand how Python does it, you'll have to read [5 pages of te
     
     parameters: '(' [typedargslist] ')'
 
-That's right. The Python grammar is not written in English or in any other natural language! It's written in something like [Backus–Naur form](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form)
+That's right. The Python grammar is not written in English or in any other natural language! It's written in something like [Backus–Naur form](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form).
 
 > This is madness!
 > This is Python!
@@ -35,4 +35,4 @@ That's it.
 > This is sane.
 > This is Forth.
 
-([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyDefs.MD))
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/whyDefs.MD))
