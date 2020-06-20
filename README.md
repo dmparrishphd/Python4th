@@ -28,4 +28,4 @@ Ariadne II (without the "a") should have a more complete set of features, and sh
 
 ## Acknowledgements
 
-I draw inspiration chiefly from [Charles H. "Chuck" Moore](https://www.youtube.com/watch?v=tb0_V7Tc5MU) (Forth's inventor), Leo Brodie (author of [Thinking Forth](http://thinking-forth.sourceforge.net/) and other texts), and Charles-Hanson Ting (creator of several Forth implementations and author of [eForth and Zen](http://forth.org/OffeteStore/1013_eForthAndZen.pdf) and other texts).
+I draw inspiration chiefly from [Charles H. "Chuck" Moore](https://www.youtube.com/watch?v=tb0_V7Tc5MU) (Forth's inventor), Leo Brodie (author of [Thinking Forth](http://thinking-forth.sourceforge.net/) and other texts), and Charles-Hanson Ting (creator of several Forth implementations and author of [eForth and Zen](https://www.amazon.com/eForth-Zen-32-bit-86eForth-Visual-ebook/dp/B06VXR1TX3/) and other texts).
