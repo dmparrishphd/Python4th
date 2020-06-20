@@ -25,3 +25,5 @@ Here's how Forth forms tokens:
 2. The sequence `\` (backslash) followed by any amount of whitespace considered a "graphic space" (influence: [LATEX](https://www.latex-project.org/)), _not_ whitespace.
 
 That's it.
+
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyMeaning.MD))
