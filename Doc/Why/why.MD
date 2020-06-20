@@ -4,4 +4,4 @@ Forth is very likely the simplest, fully functional computer programming languag
 
 How simple? Well, a lot simpler than Python, that's for sure.
 
-([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyWords.MD))
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/whyWords.MD))
