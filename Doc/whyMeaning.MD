@@ -34,3 +34,5 @@ That's it.
 
 > This is sane.
 > This is Forth.
+
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyDefs.MD))
