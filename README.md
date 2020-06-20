@@ -4,7 +4,7 @@ Forth, written in Python 3. Goals: low barrier to entry, extreme simplicity.
 
 ## Why?
 
-Why write Forth in Python 3?
+[Why](https://github.com/dmparrishphd/Python4th/tree/master/Doc) write Forth in Python 3?
 
 ## Ariadne IIa
 
