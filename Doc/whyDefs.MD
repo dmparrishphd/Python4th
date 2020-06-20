@@ -19,4 +19,4 @@ You can write a defintion that does nothing in Forth using only three symbols:
 
     doNothing : ;
     
-([continue to next section]https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyPython.MD)
+[(continue to next section)]https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyPython.MD)
