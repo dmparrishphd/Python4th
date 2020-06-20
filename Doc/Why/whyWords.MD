@@ -26,4 +26,4 @@ Here's how Forth forms tokens:
 
 That's it.
 
-([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/whyMeaning.MD))
+([continue to next section](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/whyMeaning.MD))
