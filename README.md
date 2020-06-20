@@ -25,3 +25,7 @@ A lot of essential features are yet to be incorporated (one development goal was
 ## Next Release
 
 Ariadne II (without the "a") should have a more complete set of features, and should be more thoroughly tested.
+
+## Acknowledgements
+
+I draw inspiration chiefly from [Charles H. "Chuck" Moore](https://www.youtube.com/watch?v=tb0_V7Tc5MU) (Forth's inventor), Leo Brodie (author of [Thinking Forth](http://thinking-forth.sourceforge.net/) and other texts), and Charles-Hanson Ting (creator of several Forth implementations and author of [eForth and Zen](http://forth.org/OffeteStore/1013_eForthAndZen.pdf) and other texts).
