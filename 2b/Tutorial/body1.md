@@ -1,20 +1,20 @@
 ## Genesis
 
-In the beginning, Ariadne boots, and you will see something like the following on the last two lines of the console:
+In the beginning, when Ariadne boots, you will see something like the following on the last two lines of the console:
 
     S>> '' '' '' ''
     OK>
 
-Ariadne is displaying the top four elments of the stack after the `S>>`.
+Ariadne is displaying the top four elments of the **Data Stack** (or simply "Stack") after the `S>>`.
 Their representation is determined by Python 3.
-In the above examaple, there are four null strings (`str`) on the top of the Data Stack (or "the Stack").
+In the above examaple, there are four null strings (`str`) on the top of the Stack.
 The more recent items on the Stack are displayed further to the _right_.
 
-Because Ariadne interprets words in the order received, and
+Because **Ariadne interprets words in the order received**, and
 because whitespace separates words,
-this means you can very often execute words one at a time so as to beter understand Ariadne's behavior.
+this means that you can _very often_ (but _not always_) execute words one at a time so as to beter understand Ariadne's behavior.
 
-Enter _the text_ `True` and Ariadne will do what _the word_ `True` means: place _the Python 3 `True` object on the Stack.
+Enter _the text_ `True` and Ariadne will do what _the word_ `True` means: to place the Python 3 `True` object on the Stack. **Ariadne is case sensitive** (therefore, `True`, `true`, and `TRUE` are three different things).
     
     OK> True
     S>> '' '' '' True
