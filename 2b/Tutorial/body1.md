@@ -1,6 +1,6 @@
-## 
+## Genesis
 
-After Ariadne boots, you will see something like the following on the last two lines of the console:
+In the beginning, Ariadne boots, and you will see something like the following on the last two lines of the console:
 
     S>> '' '' '' ''
     OK>
@@ -47,4 +47,4 @@ The second item becomes the value to place on the Stack when the new word is inv
     S>> '' '' '' True
     OK>
     
-([continue]())
+([continue](https://github.com/dmparrishphd/Python4th/edit/master/2b/Tutorial/body2.md))
