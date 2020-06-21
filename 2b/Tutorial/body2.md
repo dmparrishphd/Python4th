@@ -10,7 +10,7 @@
 > _intransitive verb_
 > * to set out from shore \[as in sailing\]
 > * to make an effort
-> ([Webster's](https://www.merriam-webster.com/dictionary/put%20out) (2020-06-21); formatting altered])
+> ([Webster's](https://www.merriam-webster.com/dictionary/put%20out) (2020-06-21); formatting altered)
 
     S>> '' '' '' ''
     OK>
