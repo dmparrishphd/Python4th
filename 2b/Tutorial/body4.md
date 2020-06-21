@@ -29,7 +29,7 @@ Ariadne uses strings as the fundamental type
 **Ariadne does not waste time guessing what a string means.**
 If you want the string `'1'` to mean the integer `1`, say so.
 
-Many programming languages (e.g., Python) use THE NUMBER SIGN (`#`) to indicate that the remaining text on a line of text should be _ignored_.
+Many programming languages (e.g., Python) use the _number sign_ (`#`) to indicate that the remaining text on a line of text should be _ignored_.
 **Ariadne uses the number sign to indicate a number.**
 (More specifically, `#` converts the string on the top of the Stack into an integer \[Python 3 `int`\].)
 
