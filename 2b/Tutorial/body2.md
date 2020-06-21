@@ -15,13 +15,18 @@
     S>> '' '' '' ''
     OK>
 
-Enter the text `Be\ careful\ not\ to\ fall\ off!`
+Enter the text `Be\ careful\ not\ to\ fall\ off!` Mind the `\`'s---_backslash_, not `/` (slash).
 
     S>> '' '' '' ''
     OK> Be\ careful\ not\ to\ fall\ off!
     
-Ariadne separates words by whitespace.
-Whitespace includes spaces, end-of-line markers, tabs, etc.
+Ariadne separates words by whitespace. Whitespace includes:
+
+* spaces,
+* end-of-line markers,
+* tabs,
+* etc.
+
 **However**:
 The sequence `\` followed by any amount of whitespace is considered a single, _graphic space_, **not** whitespace.
 
