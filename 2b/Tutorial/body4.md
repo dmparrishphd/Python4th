@@ -6,7 +6,7 @@ Enter `1 #` ` ` ` ` ` ` `spam =`.
 the _extra_ spaces,\
 but including more spaces\
 in all the right places\
-makes you the winner of code-raeding races.)
+makes you the winner of code-reading races.)
 
 
     S>> '' '' '' ''
