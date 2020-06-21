@@ -29,15 +29,15 @@ Enter _the text_ `the_world_is_flat`.
 The _word_ `the_world_is_flat` is not yet defined.
 **Ariadne places undefined words on the Stack.**
 
-Enter _the text_ `CONSTANT`.
+Enter _the text_ `=`.
 
     S>> '' '' True 'the_world_is_flat'
-    OK> CONSTANT
+    OK> =
     S>> '' '' '' ''
     OK>
     
 The top 2 items on the Stack are gone!
-`CONSTANT` takes the top two elements from the Stack and creates a new word from them.
+`=` takes the top two elements from the Stack and creates a new word from them.
 
 The top item becomes the new word.
 The second item becomes the value to place on the Stack when the new word is invoked:
