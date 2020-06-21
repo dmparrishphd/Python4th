@@ -8,10 +8,11 @@ The Return Stack tells Ariadne what to do next.
 `IF`'s operation is as follows:
 
 1. The top element of the Stack is removed.
-2. If that item is equivalent to `False` (or if it is not equivalent to `True`):
+2A. If that item is equivalent to `False` (or if it is not equivalent to `True`):
     1. The present operation (`IF` itself) is canceled and
     2. The following operation (the definition in which `IF` occurs) is also canceled.
-  Otherwise, processing continues with the next word after `IF`.
+
+2B. Otherwise, processing continues with the next word after `IF`.
   
  ### Then
  
