@@ -24,7 +24,7 @@ The Return Stack tells Ariadne what to do next.
  In other words, define `_NEW-WORD` (note the underscore) to be what should happen if the top element of the Stack is equivalent to `True`.
  And define `NEW-WORD` (note the _lack_ of the underscore) with the `IF` in front.
  
- (I like to use an underscore \[_\] prefix to mean "helper function."
+ (I like to use an underscore \[`_`\] prefix to mean "helper function."
  This is not a requirement of Ariadne, just a discipline I find useful.)
  
  #### Pattern 2
