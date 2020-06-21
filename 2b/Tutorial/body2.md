@@ -64,3 +64,5 @@ Enter the text `FLAT-WORLD-WARN-MAYBE`.
     OK>
     
 Ariadne puts out (issues) a warning, because, apparently, `the_world_is_flat`. If you say so.
+
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body3.md))
