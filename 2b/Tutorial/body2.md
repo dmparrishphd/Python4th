@@ -45,17 +45,6 @@ Then, `:;` splits the second element by whitespace and assigns the resulting seq
 
 Enter the text `FLAT-WORLD-WARN-MAYBE`.
 
-    S>> '' '' '' ''
-    OK> Be\ careful\ not\ to\ fall\ off!
-    S>> '' '' '' 'Be careful not to fall off!'
-    OK> FLAT-WORLD-WARNING =
-    S>> '' '' '' ''
-    OK> the_world_is_flat\ IF\ FLAT-WORLD-WARNING\ ?
-    S>> '' '' '' 'the_world_is_flat IF FLAT-WORLD-WARNING ?'
-    OK>> FLAT-WORLD-WARN-MAYBE
-    S>> '' '' 'the_world_is_flat IF FLAT-WORLD-WARNING ?' 'FLAT-WORLD-WARN-MAYBE'
-    OK>> :;
-    S>> '' '' '' ''
     OK>> FLAT-WORLD-WARN-MAYBE
     Be careful not to fall off!
     OK>
