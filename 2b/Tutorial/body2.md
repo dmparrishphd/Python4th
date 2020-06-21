@@ -9,7 +9,6 @@ Enter the text `Be\ careful\ not\ to\ fall\ off!`
 Ariadne separates words by whitespace.
 Whitespace includes spaces, end-of-line markers, tabs, etc.
 **However**:
-
 The sequence `\` followed by any amount of whitespace is considered a single, _graphic space_, **not** whitespace.
 
     OK> Be\ careful\ not\ to\ fall\ off!
