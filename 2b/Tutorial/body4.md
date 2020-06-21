@@ -4,7 +4,7 @@ Enter `1 #` ` ` ` ` ` ` `spam =`.
 
 (Ariadne erases\
 the _extra_ spaces,\
-but including more spaces\
+but including more cases\
 in all the right places\
 makes you the winner of code-reading races.)
 
