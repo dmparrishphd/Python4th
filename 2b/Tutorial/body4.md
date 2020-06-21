@@ -14,7 +14,7 @@ Enter `spam`.
     S>> '' '' '' 1
     
 Note that the `1` on the top of the Stack is not quoted.
-This symbol representd the integer (Python 3 `int`) value 1, not the string `'1'`.
+This symbol represents the integer (Python 3 `int`) value 1, not the string `'1'`.
 
 Input comes to Ariadne as Python 3 strings (`str`).
 Ariadne uses strings as the fundamental type
