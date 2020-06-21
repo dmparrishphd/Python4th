@@ -7,3 +7,5 @@ These first five parts have introduced Ariadne's ways of
 * making new words (`=` and `:;`),
 * making decisions (`IF`), and
 * making numbers (`#`)
+
+(continue \[forthcoming\])
