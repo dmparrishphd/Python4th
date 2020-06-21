@@ -1,4 +1,4 @@
-## Leviticus: Some Rules for the Ariadne Priesthood
+## Leviticus: (Some Rules)
 
 ### IF
 
