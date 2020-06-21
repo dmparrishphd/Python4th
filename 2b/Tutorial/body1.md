@@ -47,4 +47,4 @@ The second item becomes the value to place on the Stack when the new word is inv
     S>> '' '' '' True
     OK>
     
-([continue](https://github.com/dmparrishphd/Python4th/edit/master/2b/Tutorial/body2.md))
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body2.md))
