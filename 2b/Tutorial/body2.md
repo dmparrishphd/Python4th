@@ -52,7 +52,8 @@ Then `:;`
     OK>> :;
     S>> '' '' '' ''
    
-**Ariadne does not define any words containing spaces.**
+**On boot, Ariadne does have any words defined which contain spaces.**
+This means that any word you enter that contains a space will not have a definition.
 When you entered `the_world_is_flat\ IF\ FLAT-WORLD-WARNING\ ?`,
 Ariadne simply placed the string on the Stack.
 
