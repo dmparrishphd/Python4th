@@ -30,3 +30,6 @@ Many programming languages (e.g., Python) use THE NUMBER SIGN (`#`) to indicate 
 (More specifically, `#` converts the string on the top of the Stack into an integer \[Python 3 `int`\].)
 
 I hope you find Ariadne's definition of `#` neither confusing nor inconsistent.
+
+
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body5.md))
