@@ -1,3 +1,17 @@
+## Exodus: Getting Ariadne to put out
+
+> **put out** verb
+> **put out**; **putting out**; **puts out**
+>
+> _transitive verb_
+> * exert, use put out considerable effort
+> * publish, issue
+>
+> _intransitive verb_
+> * to set out from shore \[as in sailing\]
+> * to make an effort
+> ([Webster's (2020-06-21); formatting altered](https://www.merriam-webster.com/dictionary/put%20out))
+
     S>> '' '' '' ''
     OK>
 
@@ -48,3 +62,5 @@ Enter the text `FLAT-WORLD-WARN-MAYBE`.
     OK>> FLAT-WORLD-WARN-MAYBE
     Be careful not to fall off!
     OK>
+    
+Ariadne puts out a warning, because, apparently, `the_world_is_flat`. If you say so.
