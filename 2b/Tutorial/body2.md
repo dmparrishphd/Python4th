@@ -63,4 +63,4 @@ Enter the text `FLAT-WORLD-WARN-MAYBE`.
     Be careful not to fall off!
     OK>
     
-Ariadne puts out a warning, because, apparently, `the_world_is_flat`. If you say so.
+Ariadne puts out (issues) a warning, because, apparently, `the_world_is_flat`. If you say so.
