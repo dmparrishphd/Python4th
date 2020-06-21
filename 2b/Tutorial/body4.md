@@ -1,9 +1,13 @@
 ## Numbers
 
 Enter `1 #` ` ` ` ` ` ` `spam =`.
-(Ariadne doesn't care about _extra_ spaces, but
-you might find your code easier to read if
-you include extra spaces in all the right places.)
+
+(Ariadne erases\
+the _extra_ spaces,\
+but including more spaces\
+in all the right places\
+makes you the winner of code-raeding races.)
+
 
     S>> '' '' '' ''
     OK>> 1 #   spam =
