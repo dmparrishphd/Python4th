@@ -1,11 +1,10 @@
 # ARIADNE II b (UNSTABLE)
 # COPYRIGHT (2020) D. MICHAEL PARRISH. SEE ALSO ACCOMPANYING LICENCE.
 '''
-with open('ariadne2b.py') as f:
+with open('ariadne2b2.py') as f:
     exec(f.read())
 
 a['py']['cede'](a)
-
 from os import chdir
 chdir('somewhere')
 from copy import deepcopy
@@ -83,9 +82,7 @@ del echo
 
 
 
-def nop(x):
-    '''Included for testing purposes.
-    '''
+def nop(x): # FOR TESTING, ETC.
     pass
 
 a['_include'](a, nop)
@@ -243,9 +240,7 @@ def fimport(x, function=None, as_=''):
     PY['expand'](x, name)
 
 a['_include'](a, fimport)
-
 a['_expand'](a, 'FIMPORT')
-
 del fimport
 
 
@@ -255,9 +250,7 @@ def eval_(x):
     PY['push'](x, eval(PY['drop'](x), x['_GLOBALS'], PY))
 
 a['_include'](a, eval_)
-
 a['_expand'](a, 'EVAL', 'eval_')
-
 del eval_
 
 
@@ -266,9 +259,7 @@ def exec_(x):
     exec(x['_Python']['drop'](x), x['_GLOBALS'], x['_Python'])
 
 a['_include'](a, exec_)
-
 a['_expand'](a, 'EXEC', 'exec_')
-
 del exec_
 
 
@@ -280,7 +271,6 @@ def rpush(x, words):
     R['TOP'][0] = len(words)
 
 a['_include'](a, rpush)
-
 del rpush
 
 
@@ -295,7 +285,6 @@ def rdrop(x):
         x['_Python']['_populatereturnstack'](x)
 
 a['_include'](a, rdrop)
-
 del rdrop
 
 
@@ -307,7 +296,6 @@ def step(x):
     Top[0] -= 1
 
 a['_include'](a, step)
-
 del step
 
 
@@ -317,13 +305,12 @@ def opera(x):
     return R['SUB'][0][R['TOP'][0] - 0]
 
 a['_include'](a, opera)
-
 del opera
 
 
 
 
-def execute(x):
+def _execute(x):
     '''Not to be confused with Forth { EXECUTE }.
     '''
     PY = x['_Python']
@@ -335,8 +322,24 @@ def execute(x):
     else:
         PY['push'](x, WORD)
 
-a['_include'](a, execute)
+a['_include'](a, _execute)
+del _execute
 
+
+
+def execute(x):
+    '''Forth { EXECUTE }.
+    '''
+    PY = x['_Python']
+    WORD = PY['drop'](x)
+    D = x['_DICTIONARY']
+    if WORD in D:
+        PY['rpush'](x, (WORD,))
+    else:
+        PY['push'](x, WORD)
+
+a['_include'](a, execute)
+a['_expand'](a, 'EXECUTE')
 del execute
 
 
@@ -348,12 +351,12 @@ def ddrop(x):
     K = PY['drop'](x)
     if K in D:
         D.pop(K)
-        x['_DATA'].pop(K)
+        DA = x['_DATA']
+        if K in DA:
+            DA.pop(K)
 
 a['_include'](a, ddrop)
-
 a['_expand'](a, 'DDROP')
-
 del ddrop
 
 
@@ -362,7 +365,6 @@ def defaultlist(x):
     return [x['_Python']['_DEFAULT']]
 
 a['_include'](a, defaultlist)
-
 del defaultlist
 
 
@@ -373,7 +375,6 @@ def _makestack(x):
         'TOP SUB REST'.split())) })
 
 a['_include'](a, _makestack)
-
 del _makestack
 
 
@@ -385,7 +386,6 @@ def top4(x):
     return S['REST'][-2:] + S['SUB'] + S['TOP']
 
 a['_include'](a, top4)
-
 del top4
 
 
@@ -396,7 +396,6 @@ def _dup(stack):
     stack['SUB'].append(stack['TOP'][0])
 
 a['_include'](a, _dup)
-
 del _dup
 
 
@@ -405,10 +404,8 @@ def dup(x):
     x['_Python']['_dup'](x['_DATA_STACK'])
 
 a['_include'](a, dup)
-
-del dup
-
 a['_expand'](a, 'DUP')
+del dup
 
 
 
@@ -416,7 +413,6 @@ def top(x):
     return x['_DATA_STACK']['TOP'][0]
 
 a['_include'](a, top)
-
 del top
 
 
@@ -425,7 +421,6 @@ def sub(x):
     return x['_DATA_STACK']['SUB'][0]
 
 a['_include'](a, sub)
-
 del sub
 
 
@@ -437,9 +432,7 @@ def over(x):
     S['TOP'][0] = S['REST'][-1]
 
 a['_include'](a, over)
-
 a['_expand'](a, 'OVER')
-
 del over
 
 
@@ -448,9 +441,7 @@ def back(x):
     x['_BACK_STACK'].append( x['_Python']['drop'](x) )
 
 a['_include'](a, back)
-
 a['_expand'](a, 'BACK')
-
 del back
 
 
@@ -463,9 +454,7 @@ def forth(x):
         x['_BACK_STACK'].pop() )
 
 a['_include'](a, forth)
-
 a['_expand'](a, 'FORTH')
-
 del forth
 
 
@@ -473,7 +462,7 @@ def readline(x):
     return x['_Python']['push'](x, input())
 
 a['_include'](a, readline)
-a['_expand'](a, 'READLINE')
+a['_expand'](a, 'READ')
 del readline
 
 
@@ -486,7 +475,6 @@ def _input(x):
     PY['push'](x, input('OK> ') + '\n')
 
 a['_include'](a, _input)
-
 del _input
 
 
@@ -497,7 +485,6 @@ def finput(x, file):
     x['_Python']['push'](x, file.readline())
 
 a['_Python'].update({ 'finput': finput })
-
 del finput
 
 
@@ -516,7 +503,6 @@ def read(x):
             inn.pop()
 
 a['_Python'].update({ 'read': read })
-
 del read
 
 
@@ -538,7 +524,6 @@ def preprocess(string):
     return splitIgnoringGraphicSpace(collapseSpaces(whitespaceToSpace(string)))
 
 a['_include'](a, preprocess)
-
 del preprocess
 
 
@@ -552,9 +537,7 @@ def query(x):
     PY['rpush'](x, (inn.popleft(),))
 
 a['_include'](a, query)
-
 a['_expand'](a, 'QUERY')
-
 del query
 
 
@@ -562,10 +545,9 @@ del query
 def cede(x):
     x['_ATTN'][0] = True
     while x['_ATTN'][0]:
-        x['_Python']['execute'](x)
+        x['_Python']['_execute'](x)
 
 a['_include'](a, cede)
-
 del cede
 
 
@@ -574,9 +556,7 @@ def cede_(x):
     x['_ATTN'][0] = False
 
 a['_include'](a, cede_)
-
 a['_expand'](a, 'CEDE', 'cede_')
-
 del cede_
 
 
@@ -586,9 +566,7 @@ def call(x):
     PY['push'](x, PY['drop'](x)())
 
 a['_include'](a, call)
-
 a['_expand'](a, '()', 'call')
-
 del call
 
 
@@ -600,9 +578,7 @@ def call1(x):
     PY['push'](x, FUNCTION(ARG))
 
 a['_include'](a, call1)
-
 a['_expand'](a, '(1)', 'call1')
-
 del call1
 
 
@@ -614,9 +590,7 @@ def callstar(x):
     PY['push'](x, FUNCTION(*ARGS))
 
 a['_include'](a, callstar)
-
 a['_expand'](a, '(*)', 'callstar')
-
 del callstar
 
 
@@ -628,9 +602,7 @@ def callstarstar(x):
     PY['push'](x, FUNCTION(*ARGS, **KWARGS))
 
 a['_include'](a, callstarstar)
-
 a['_expand'](a, '(**)', 'callstarstar')
-
 del callstarstar
 
 
@@ -643,9 +615,7 @@ def appendleft(x):
     PY['push'](x, Obj)
 
 a['_include'](a, appendleft)
-
 a['_expand'](a, 'LAPPEND', 'appendleft')
-
 del appendleft
 
 
@@ -658,9 +628,7 @@ def append(x):
     PY['push'](x, Obj)
 
 a['_include'](a, append)
-
 a['_expand'](a, 'APPEND')
-
 del append
 
 
@@ -670,9 +638,7 @@ def split(x):
     PY['push'](x, PY['drop'](x).split())
 
 a['_include'](a, split)
-
 a['_expand'](a, 'SPLIT')
-
 del split
 
 
@@ -685,7 +651,6 @@ def docolon(x):
     PY['rpush'](x, x['_DATA'][OP])
 
 a['_include'](a, docolon)
-
 del docolon
 
 
@@ -700,9 +665,7 @@ def colon(x):
     x['_DATA'].update({ WORD: [] })
 
 a['_include'](a, colon, ':')
-
 a['_expand'](a, ':')
-
 del colon
 
 
@@ -715,9 +678,7 @@ def backtick(x):
     x['_DATA'][WORD].append(TOKEN)
 
 a['_include'](a, backtick, '`')
-
 a['_expand'](a, '`')
-
 del backtick
 
 
@@ -729,9 +690,7 @@ def semicolon(x):
         tuple(reversed( x['_DATA'][WORD] )) })
 
 a['_include'](a, semicolon, ';')
-
 a['_expand'](a, ';')
-
 del semicolon
 
 
@@ -745,9 +704,7 @@ def colonsemicolon(x):
     x['_DATA'].update({ WORD: LIST })
 
 a['_include'](a, colonsemicolon, ':;')
-
 a['_expand'](a, ':;')
-
 del colonsemicolon
 
 
@@ -756,7 +713,6 @@ def docode(x):
     x['_DATA'][x['_Python']['opera'](x)](x)
 
 a['_include'](a, docode)
-
 del docode
 
 
@@ -771,9 +727,7 @@ def code(x):
     x['_DATA'].update({ WORD: eval(STRING) })
 
 a['_include'](a, code)
-
 a['_expand'](a, 'CODE')
-
 del code
 
 
@@ -785,9 +739,7 @@ def dot(x):
     print(x['_Python']['drop'](x))
 
 a['_include'](a, dot, '?')
-
 a['_expand'](a, '?')
-
 del dot
 
 
@@ -818,29 +770,12 @@ del constant
 
 a['_Python']['_cold'](a)
 
-#EXTEND ARIADNE IN TERMS OF ITSELF:
-'''
-with open('ariadne2b.py') as f:
-    exec(f.read())
-
+# EXTEND ARIADNE IN TERMS OF ITSELF.
+# WHEN THE FOLLOWING LINE EXECUTES,
+# WE'RE NOT IN KANSAS ANYMORE.
 a['py']['cede'](a)
 
-
-
 \# :   `DROP `   ;
-
-
-
-{_\#_}_CAN_BE_USED_TO_MAKE_COMMENTS.
-\#
-
-
-
-`CODING_DISCIPLINE:                    \#
-    `___ONLY_ONE_WORD_BEGINS_WITH_`_   \#
-    `___NO_WORDS_CONTAIN_SPACE         \#
-
-
 
 \
 BLANK =
@@ -851,19 +786,14 @@ False EVAL   False =
 
 True EVAL   True =
 
-
-
 int EVAL   _INT =
-
 _INT\ (1)   # :;
 
-
+float EVAL   _FLOAT =
+_FLOAT\ (1)   #f :;
 
 lambda\ x:x['_Python']['push'](x,x['_Python']['drop'](x)+\ x['_Python']['drop'](x))   _+   CODE
-
 SWAP\ _+   +   :;
-
-
 
                DROP\ DROP    2DROP :;
                BACK\ BACK    2BACK :;
@@ -874,65 +804,117 @@ OVER\ 2BACK\ DROP\ 2FORTH     SWAP :;
 BACK\ 2ROLL\ FORTH\ 2ROLL    2SWAP :;
                 DUP\ BACK     COPY :;
 
-
-
 from\ collections\ import\ deque   EXEC
-
 SELF _Python PRY deque PRY   _DEQUE =
-
 _DEQUE\ ()   DEQUE :;
-
-
 
 DEQUE\     LAPPEND SINGLETON :;
 SINGLETON\ LAPPEND      PAIR :;
 PAIR\      LAPPEND   TRIPPLE :;
 
-
-
 BACK\ PAIR\ FORTH\ (*)   (2) :;
-
-
-
-`BUILDING_UP_TO_FN2_AND_FN21._THEN_WE_CAN_EASILY_ADOPT_BINARY_OPERATORS.
-\#
-
-lambda\ x,y:x   BLANK   +   _LAM2A =
-
-\ y                         _LAM2B =
-
-BLANK\ SWAP\ +\ _LAM2B\ +\ _LAM2A\ SWAP\ +\ EVAL   _LAM2 :;
-
-BACK\ _LAM2\ FORTH\ =   _FN2A :;
-
-BACK\ COPY\ _FN2A\   `(2)\   ``\ REST\   FORTH\   +\   FORTH   _FN2B :;
-
-_FN2B\ :\   `\ `\   ;   FN2 :;
-
-DUP\ `_\ REST\ SWAP\ +\ OVER\ FN2   FN21 :;
-
-
-
-`NOW_WE_CAN_ADOPT_A_BUNCH_OF_BINARY_OPERATORS. \#
-`BUT_FIRST,_WE_DEVELOP_{WHILE}.                \#
-
-DUP\ IF BLANK +  _WHILEA =
-\ EBB _WHILEB =
-_WHILEA\ SWAP\ +\ _WHILEB\ +   WHILE :;
-
-`WHILE_CREATES_A_STRING_THAT_REPRESENTS_CALLING_THE_WORD \#
-`AT_TOP._THE_INTENT_IS_THAT_IT_SHOULD_IMMEDIATELY_BE_GIVEN \#
-`A_NAME_VIA_{:;}_AND_CALLED,_THEN_DROPPED._OTHER_APPLICATIONS \#
-`ARE_POSSIBLE \#
-
-
-NULL and in is or * - ** / // % << >> & | ^ < > <= >= == != 
-
-\ FN21 WHILE   `TEMP REST   :;   TEMP   `TEMP DROP
-
-
-
 
 getattr EVAL   _. =
 _.\ (2)   . :;
-'''
+
+int EVAL _#2 =
+READ
+PAIR _#2 (*)
+#2 :;
+
+READ
+16 # #2
+unhex :;
+
+chr EVAL _chr =
+_chr\ (1) chr :;
+
+unhex\ chr U+ :;
+
+DEQUE __LOOP_NAMES__ =
+0xee01 unhex chr __LOOP_NAMES__ APPEND DROP
+
+-1\ #\ PRY LAST :;
+
+READ
+__LOOP_NAMES__   DUP LAST   DUP LAST   + SWAP APPEND DROP
+__LOOP_NAMES_INC__ :;
+
+READ
+__LOOP_NAMES__ pop . () DROP
+__LOOP_NAMES_DEC__ :;
+
+DUP\ IF BLANK + _WHILEA1 =
+\ EBB _WHILEA2 =
+
+READ
+__LOOP_NAMES__ __LOOP_NAMES_INC__ LAST SWAP
+READ
+_WHILEA1 SWAP + _WHILEA2 +  OVER :; EXECUTE
++
+READ
+__LOOP_NAMES_DEC__
++ WHILE :;
+
+
+READ
+BUILD UP FN21 TO ENABLE ADOPTION OF BINARY OPERATORS.
+\#
+
+lambda\ x,y:x   BLANK   +   _LAM2A =
+\ y                         _LAM2B =
+
+READ
+BLANK SWAP + _LAM2B + _LAM2A SWAP + EVAL
+_LAM2 :;
+
+BACK\ _LAM2\ FORTH\ =   _FN2A :;
+
+READ
+BACK COPY _FN2A   `(2)   `` REST   FORTH   +   FORTH
+_FN2B :;
+
+READ
+_FN2B :   `   `   ;
+FN2 :;
+
+READ
+DUP `_ REST SWAP + OVER FN2
+FN21 :;
+
+NULL and in is or * - ** / // % << >> & | ^ < > <= >= == != 
+`FN21 REST WHILE
+
+READ
+BUILD UP FN1 TO FACILITATE ADOPTION OF UNARY FUNCTIONS.
+\#
+
+COPY\ COPY   2COPY :;
+
+READ
+2COPY EVAL   `_ REST  FORTH  +   COPY   =
+_FN1A :;
+READ
+FORTH BLANK +   `(1) REST +   FORTH :;
+_FN1B :;
+
+_FN1A\ _FN1B   FN1 :;
+
+NULL abs all any ascii bin bool callable frozenset hash hex id
+len memoryview oct ord repr reversed 
+`FN1 REST WHILE
+
+iter EVAL _iter =
+_iter\ (1) iter1 :;
+
+print EVAL _print =
+
+iter1\ _print\ (*)\ DROP   ?? :;
+
+READ
+SELF _DICTIONARY PRY keys . ()
+_WORDS :;
+
+_WORDS\ ??   WORDS :;
+
+REST\ _WORDS\ in   FIND :;
