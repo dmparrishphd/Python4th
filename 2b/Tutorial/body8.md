@@ -27,7 +27,7 @@ Hint: Ariadne defines exactly one word that begins with the accent grave, `` ` `
     
 Except for `` ` ``, Ariadne will place any word containing `` ` `` on the Stack.
 
-But we wanted `DROP` on the Stack, not ```DROP``. You can use `REST` to replace the object on the top of Stack with the _rest_ of the object.
+But we wanted `DROP` on the Stack, not `` `DROP ``. You can use `REST` to replace the object on the top of Stack with the _rest_ of the object.
 That is, all but the first item.
 
     S>> '' '' 'Ruth' '`DROP'
