@@ -17,7 +17,7 @@ How 'bout `DROP`?
 Oops!
 Since `DROP` is defined, Ariadne applied the definition of `DROP`, which is to drop the top item from the Stack.
 Let's try again.
-Hint: Ariadne defines exactly one word that begins with the accent grave, `````, +(a.k.a, backquote), `````; that is, Ariadne defines the word `````.
+Hint: Ariadne defines exactly one word that begins with the accent grave, `` ` ``, +(a.k.a, backquote), `` ` ``; that is, Ariadne defines the word `` ` ``.
 
     S>> '' '' '' ''
     OK> Ruth
@@ -25,7 +25,7 @@ Hint: Ariadne defines exactly one word that begins with the accent grave, `````,
     OK> `DROP
     S>> '' '' 'Ruth' '`DROP'
     
-Except for `````, Ariadne will place any word containing ````` on the Stack.
+Except for `` ` ``, Ariadne will place any word containing `` ` `` on the Stack.
 
 But we wanted `DROP` on the Stack, not ```DROP``. You can use `REST` to replace the object on the top of Stack with the _rest_ of the object.
 That is, all but the first item.
