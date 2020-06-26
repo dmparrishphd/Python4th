@@ -35,3 +35,39 @@ That is, all but the first item.
     S>> '' '' 'Ruth' 'DROP'
     
     
+## Quotes? Where We're Going, We Don't Need Quotes
+
+Ariadne read entire words at a time, not individual characters.
+Words are separated by whitespace.
+The sequence `\` followed by whitespace counts as a _graphic space_, not whitespace.
+
+What this means is that you don't _need_ quotes.
+But you can use them if you _want_ to have quotes your strings:
+
+    S>> '' '' '' ''
+    OK> spam\ eggs
+    S>> '' '' '' 'spam eggs'
+    OK> doesn't
+    S>> '' '' 'spam eggs' "doesn't"
+    OK> "Yes,"\ they\ said.
+    S>> '' 'spam eggs' "doesn't" '"Yes," they said.'
+    OK> "Isn't"\ they said.
+    S>> "doesn't" '"Yes," they said.' '"Isn\'t" they' 'said.'
+    
+You can use `?` to drop the top item of the Stack and print it:
+
+    S>> 'spam eggs' "doesn't" '"Yes," they said.' '"Isn\'t," they said.'
+    OK> ?
+    "Isn't," they said.
+    S>> '' 'spam eggs' "doesn't" '"Yes," they said.'
+    OK> ?
+    "Yes," they said.
+    S>> '' '' 'spam eggs' "doesn't"
+    OK> ?
+    doesn't
+    S>> '' '' '' 'spam eggs'
+    OK> ?
+    spam eggs
+    S>> '' '' '' ''
+    OK>
+   
