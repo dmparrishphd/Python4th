@@ -1,13 +1,13 @@
 # Judges
 
-What to do when your code fail, how do you judge the cause?
+What to do when your code fails? How do you judge the cause?
 
 Earlier, you saw how to execute words one at a time.
 Similarly, Ariadne allows you to step through the execution of your code one word at a time.
 You will need to do this in Python 3.
-If Ariadne has not already crashed and kicked you out to Python 3, you can use `CEDE` to stop Ariadne's _automatic_ operation.
+If Ariadne has not already crashed and kicked you out to Python 3, you can use `ZZ` to stop Ariadne's _automatic_ operation.
 
-    OK> CEDE
+    OK> ZZ
     >>>
    
 From the Python 3 prompt, you can some utilities that facilitate working with Ariadne more directly.
@@ -36,6 +36,16 @@ You can drop one process from the Return Stack with
     
 If that is too much typing for you, feel free to define some functions of your own, or even modify Ariadne by adding `a['drop']` or something.
 
-You can reanimate Ariadne with
+You can continue sailing with Ariadne with:
 
-    >>> a['py']['cede'](a)
+    >>> a['sail'](a)
+
+## Heal Ariadne while She Sleeps
+
+While Ariadne is asleep, you can whisper in her ear what she should do when she wakes up.
+Perhaps there is a word called `!TEXT!` that she should interpret:
+
+    >>> a['py']['rpush'](a, ('!TEXT!',))
+    >>> a['r']
+    {'TOP': [1], 'SUB': [('!TEXT!',)], 'REST': [(('QUERY',), 0)]}
+    >>>
