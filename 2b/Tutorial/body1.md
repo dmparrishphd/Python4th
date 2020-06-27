@@ -10,6 +10,17 @@ Their representation is determined by Python 3.
 In the above examaple, there are four null strings (`str`) on the top of the Stack.
 The more recent items on the Stack are displayed further to the _right_.
 
+You can put Ariadne to sleep with `ZZ`:
+
+    OK> ZZ
+    >>>
+    
+When you are ready to sail with Ariadne again, tell her:
+
+    >>> a['sail'](a)
+    S>> '' '' '' ''
+    OK>
+
 Because
 
 * **Ariadne interprets words in the order received** and because
