@@ -71,3 +71,4 @@ You can use `?` to drop the top item of the Stack and print it:
     S>> '' '' '' ''
     OK>
    
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body8A.md))
