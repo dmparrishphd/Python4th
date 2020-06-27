@@ -49,3 +49,5 @@ Perhaps there is a word called `!TEXT!` that she should interpret:
     >>> a['r']
     {'TOP': [1], 'SUB': [('!TEXT!',)], 'REST': [(('QUERY',), 0)]}
     >>>
+
+([continue]())https://github.com/dmparrishphd/Python4th/edit/master/2b/Tutorial/body8.md
