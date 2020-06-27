@@ -45,3 +45,25 @@ You can use in combination with other input to form multi-line strings:
     TABS    TABS    TABS    TABS
     
 Ariadne does not control the amount of space output when a tab character is printed.
+
+## line upon line, line upon line
+
+The word `'''` reads the "entire" content of `stdin` (standard input, often from the keyboard).
+When entering text from the keyboard, the end of input may be indicatd by <CTRL> + Z <ENTER> (Hold down the Control key, press the Z key, release, and press the Enter key).
+You may see the text `^Z` appear when you presse that sequence of keys:
+
+    S>> '' '' ''
+    OK> '''
+    "What about the R-O-U-Ses?"
+    "Rodents of Unusual Size?
+    "I don't think they exist."
+    ^Z
+S>> '' '' '' '"What about the R-O-U-Ses?"\n"Rodents of Unusual Size?\n"I don\'t think they exist."\n'
+OK> ?
+"What about the R-O-U-Ses?"
+"Rodents of Unusual Size?
+"I don't think they exist."
+
+S>> '' '' ''
+
+`'''` reads from `stdin` only. Beware of this if you use `'''` in a file to be loaded by Ariadne \[forthcoming feature\].
