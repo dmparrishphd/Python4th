@@ -23,12 +23,13 @@ However, I think it is unusual to use "hard coded" numbers or "magic numbers" fo
 Usually, the index is computed.
 The special cases of wanting the first and second elments come up a lot.
 But for those cased, it may be better to use special words.
-Ariadne defines `FIRST` and `SECOND`:
+Ariadne defines `FIRST`, `SECOND`, and `LAST`:
 
     1 # ONE =
     0 # ZERO =
     ZERO\ ] FIRST :;
     ONE\ ] SECOND :;
+    -1\ #\ ] LAST :; 
     
 You might use them like this:
     
@@ -37,4 +38,6 @@ You might use them like this:
     S>> 'n' 'o' 'P' 'P'
     OK> word SECOND
     S>> 'o' 'P' 'P' 'y'
+    OK> word LAST
+    S>> 'n' 'o' 'P' 'n'
     
