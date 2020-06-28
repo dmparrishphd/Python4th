@@ -1,17 +1,33 @@
-# ARIADNE II b (UNSTABLE)
+''' # ARIADNE II b (UNSTABLE) JULY "FORTH" 2020 (ariadne2b7.py)
 # COPYRIGHT (2020) D. MICHAEL PARRISH. SEE ALSO ACCOMPANYING LICENCE.
-'''
+
+# ONE BOOT PROCESS THAT SEEMS TO WORK BEGINS HERE AND PROCEEDS TO THE NEXT TRIPPLE QUOTE:
+
+# **** DELETE EVERYTHING THAT'S NOT BUILT IN TO PYTHON 3 ****
+for name in dir():
+    if name != 'name' and not (name[:2] == '__' and name[-2:] == '__'):
+        exec('del ' + name)
+
+del name
+
+from copy import deepcopy
+
 from os import chdir
-chdir('somewhere')
-with open('ariadne2b2.py') as f:
+chdir('somewhere') # WHEREVER ariadne.py, ariadne2b7.clew, AND light.clew ARE FOUND
+
+with open('ariadne2b7.py') as f:
     exec(f.read())
 
-a['py']['sail'](a)
-from copy import deepcopy
+del f
+
+a['sail'](a) # WE'RE NOT IN KANSAS ANYMORE.
+ariadne2b7.clew LOAD
+light.clew LOAD
 '''
 
 _a = {}
 
+_a['globals'] = globals()
 from sys import stdin
 _a['stdin'] = stdin
 del stdin
@@ -19,8 +35,6 @@ del stdin
 a = {}
 
 a['_EXTERNAL'] = '_a'
-
-a['_GLOBALS'] = globals()
 
 a['_SELF'] = a
 
@@ -34,6 +48,7 @@ a['_DATA'] = {} # DATA FIELDS FOR WORDS HAVING DATA
 a['_DICTIONARY'] = {}
 
 a['_INPUTS'] = [lambda x: eval(x['_EXTERNAL'])['stdin']]
+a['_INPUT_FILES'] = [None]
 
 a['_Python'] = {}
 
@@ -247,7 +262,10 @@ del fimport
 
 def eval_(x):
     PY =x['_Python']
-    PY['push'](x, eval(PY['drop'](x), x['_GLOBALS'], PY))
+    PY['push'](x, eval(
+        PY['drop'](x),
+        eval(x['_EXTERNAL'])['globals'],
+        PY))
 
 a['_include'](a, eval_)
 a['_expand'](a, 'EVAL', 'eval_')
@@ -256,7 +274,10 @@ del eval_
 
 
 def exec_(x):
-    exec(x['_Python']['drop'](x), x['_GLOBALS'], x['_Python'])
+    exec(
+        x['_Python']['drop'](x),
+        eval(x['_EXTERNAL'])['globals'],
+        x['_Python'])
 
 a['_include'](a, exec_)
 a['_expand'](a, 'EXEC', 'exec_')
@@ -490,17 +511,29 @@ del finput
 
 
 
+def load(x):
+    PY = x['_Python']
+    file = open(PY['drop'](x))
+    x['_INPUT_FILES'].append(file)
+    x['_INPUTS'].append(lambda x: x['_INPUT_FILES'][-1])
+
+a['_include'](a, load)
+a['_expand'](a, 'LOAD')
+del load
+
+
+
 def read(x):
     PY = x['_Python']
-    from sys import stdin
     inn = x['_INPUTS']
     file = inn[-1](x)
-    if file is stdin:
+    if len(inn) < 2: # inn[0] SHOULD BE stdin
         PY['_input'](x)
     else:
-        PY['finput'](x, f)
+        PY['finput'](x, file)
         if not PY['top'](x):
             file.close()
+            x['_INPUT_FILES'].pop()
             inn.pop()
 
 a['_Python']['read'] = read
@@ -515,7 +548,8 @@ def readRest(x):
 
 a['_Python']['readRest'] = readRest
 a['_expand'](a, 'READREST', 'readRest')
-del read
+del readRest
+
 
 
 def preprocess(string):
@@ -553,23 +587,23 @@ del query
 
 
 
-def cede(x):
+def sail(x):
     x['_ATTN'][0] = True
     while x['_ATTN'][0]:
         x['_Python']['_execute'](x)
 
-a['_include'](a, cede)
-a['sail'] = a['_Python']['cede']
-del cede
+a['_include'](a, sail)
+a['sail'] = a['_Python']['sail']
+del sail
 
 
 
-def cede_(x):
+def zz(x):
     x['_ATTN'][0] = False
 
-a['_include'](a, cede_)
-a['_expand'](a, 'ZZ', 'cede_')
-del cede_
+a['_include'](a, zz)
+a['_expand'](a, 'ZZ')
+del zz
 
 
 
@@ -768,193 +802,3 @@ del constant
 
 
 a['_Python']['_cold'](a)
-
-# EXTEND ARIADNE IN TERMS OF ITSELF.
-# WHEN THE FOLLOWING LINE EXECUTES,
-# WE'RE NOT IN KANSAS ANYMORE.
-a['py']['sail'](a)
-
-\# :   `DROP `   ;
-
-int EVAL   _INT =
-_INT\ (1)   # :;
-
-list EVAL _list =
-_list\ () list :;
-
-1 # ONE =
-0 # ZERO =
-ZERO\ ] FIRST :;
-ONE\ ] SECOND :;
--1\ #\ ] LAST :;
-
-\
-BLANK =
-
-BLANK REST   NULL =
-
-False EVAL   False =
-
-True EVAL   True =
-
-float EVAL   _FLOAT =
-_FLOAT\ (1)   #f :;
-
-lambda\ x:x['_Python']['push'](x,x['_Python']['drop'](x)+\ x['_Python']['drop'](x))   _+   CODE
-SWAP\ _+   +   :;
-
-               DROP\ DROP    2DROP :;
-               BACK\ BACK    2BACK :;
-             FORTH\ FORTH   2FORTH :;
-OVER\ 2BACK\ DROP\ 2FORTH     SWAP :;
-  BACK\ SWAP\ FORTH\ SWAP     ROLL :;
-               ROLL\ ROLL   UNROLL :;
-BACK\ UNROLL\ FORTH\ UNROLL  2SWAP :;
-                DUP\ BACK     COPY :;
-
-list\ APPEND SINGLETON :;
-SWAP\ SINGLETON\ APPEND      PAIR :;
-UNROLL\ PAIR\ APPEND   TRIPPLE :;
-
-BACK\ PAIR\ FORTH\ (*)   (2) :;
-
-getattr EVAL   _. =
-_.\ (2)   . :;
-
-int EVAL _#2 =
-READ
-PAIR _#2 (*)
-#2 :;
-
-READ
-16 # #2
-unhex :;
-
-chr EVAL _chr =
-_chr\ (1) chr :;
-
-9 # chr   TAB =
-10 # chr   LF =
-
-0x HEXPREFIX =
-
-HEXPREFIX\ SWAP\ +\ unhex\ chr U+ :;
-
-list __LOOP_NAMES__ =
-ee01 U+ __LOOP_NAMES__ APPEND DROP
-
-READ
-__LOOP_NAMES__   DUP LAST   DUP LAST   + SWAP APPEND DROP
-__LOOP_NAMES_INC__ :;
-
-READ
-__LOOP_NAMES__ pop . () DROP
-__LOOP_NAMES_DEC__ :;
-
-DUP\ IF BLANK + _WHILEA1 =
-\ EBB _WHILEA2 =
-
-READ
-__LOOP_NAMES__ __LOOP_NAMES_INC__ LAST SWAP
-READ
-_WHILEA1 SWAP + _WHILEA2 +  OVER :; EXECUTE
-+
-READ
-__LOOP_NAMES_DEC__
-+ WHILE :;
-
-READ
-BUILD UP FN21 TO ENABLE ADOPTION OF BINARY OPERATORS.
-\#
-
-lambda\ x,y:x   BLANK   +   _LAM2A =
-\ y                         _LAM2B =
-
-READ
-BLANK SWAP + _LAM2B + _LAM2A SWAP + EVAL
-_LAM2 :;
-
-BACK\ _LAM2\ FORTH\ =   _FN2A :;
-
-READ
-BACK COPY _FN2A   `(2)   `` REST   FORTH   +   FORTH
-_FN2B :;
-
-READ
-_FN2B :   `   `   ;
-FN2 :;
-
-READ
-DUP `_ REST SWAP + OVER FN2
-FN21 :;
-
-NULL and in is or * - ** / // % << >> & | ^ < > <= >= == != 
-`FN21 REST WHILE
-
-READ
-BUILD UP FN1 TO FACILITATE ADOPTION OF UNARY FUNCTIONS.
-\#
-
-COPY\ COPY   2COPY :;
-
-READ
-2COPY EVAL   `_ REST  FORTH  +   COPY   =
-_FN1A :;
-READ
-FORTH BLANK +   `(1) REST +   FORTH :;
-_FN1B :;
-
-_FN1A\ _FN1B   FN1 :;
-
-NULL abs all any ascii bin bool callable frozenset hash hex id
-len memoryview oct ord repr reversed 
-`FN1 REST WHILE
-
-iter EVAL _iter =
-_iter\ (1) iter1 :;
-
-print EVAL _print =
-
-iter1\ _print\ (*)\ DROP   ?? :;
-
-READ
-SELF _DICTIONARY ] keys . ()
-_WORDS :;
-
-_WORDS\ ??   WORDS :;
-
-REST\ _WORDS\ in   FIND :;
-
-lambda\ x,start:x[start:]   EVAL   _:] =
-_:]\ (2)   :] :;
-
-COPY\ `_\ REST\ SWAP\ +\ COPY\ =   _FN2a1 :;
-FORTH\ BLANK\ +\ `(2)\ REST\ +\ BLANK\ +\ FORTH\ :;   _FN2a2 :;
-_FN2a1\ _FN2a2 FN2a :;
-
-lambda\ x,y:x[:y] EVAL [: FN2a
-
-READ\ 5\ #\ :]   TEXT :;
-
-FORTH\ DROP   BDROP :;
-
-READ
-WHY-DOESNT-THIS-WORK?--EBB-IS-NOT-FUNCTIONING-AS EXPECTED.
-READ
-_!TEXT! : `READ ` ;
-READ
-_!TEXT!\ BACK   _!TEXT!_START_UP :;
-READ
-DUP\ FORTH\ COPY\ !=\ IF\ _!TEXT!\ EBB\ NOP   _!TEXT!_MAIN :;
-READ
-_!TEXT!_START_UP\ _!TEXT!_MAIN\ BDROP   !TEXT! :;
-\# \# \# \# \#
-
-
-
-from\ sys\ import\ stdin   EXEC
-SELF _Python ] stdin ]   STDIN =
-
-STDIN\ READREST   ''' :;
-
-
