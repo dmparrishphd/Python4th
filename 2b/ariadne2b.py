@@ -1,12 +1,12 @@
 # ARIADNE II b (UNSTABLE)
 # COPYRIGHT (2020) D. MICHAEL PARRISH. SEE ALSO ACCOMPANYING LICENCE.
 '''
+from os import chdir
+chdir('somewhere')
 with open('ariadne2b2.py') as f:
     exec(f.read())
 
-a['py']['cede'](a)
-from os import chdir
-chdir('somewhere')
+a['py']['sail'](a)
 from copy import deepcopy
 '''
 
@@ -55,7 +55,7 @@ a[ 'd'] = a['_DICTIONARY']
 
 def _include(x, obj, name=None):
     name = getattr(obj, '__name__') if name is None else name
-    x['_Python'].update({ name: obj })
+    x['_Python'][name] = obj
 
 a['_include'] = _include
 del _include
@@ -105,8 +105,8 @@ del if_
 
 def ebb(x):
     x['_Python']['rdrop'](x) # DROP { EBB } ITSELF
-    x['_RETURN_STACK']['TOP'][0] = len(x[
-        '_RETURN_STACK']['SUB'])
+    R = x['_RETURN_STACK']
+    R['TOP'][0] = len(R['SUB'])
 
 a['_include'](a, ebb)
 a['_expand'](a, 'EBB')
@@ -126,14 +126,14 @@ del _populatereturnstack
 
 
 
-def _makereturnstack(x):
+def _rclear(x):
     x['_RETURN_STACK'] = {
         'TOP': [None], 'SUB': [None], 'REST': [] }
     x['_Python']['_populatereturnstack'](x)
 
-a['_include'](a, _makereturnstack)
+a['_include'](a, _rclear)
 
-del _makereturnstack
+del _rclear
 
 
 
@@ -149,8 +149,8 @@ del rest
 
 def _cold(x):
     PY = x['_Python']
-    PY['_makestack'](x)
-    PY['_makereturnstack'](x)
+    PY['_clear'](x)
+    PY['_rclear'](x)
     x.update({
         'py': x['_Python'],
         'r': x['_RETURN_STACK'],
@@ -207,7 +207,7 @@ def pry(x):
     PY['push'](x, container[index])
 
 a['_include'](a, pry)
-a['_expand'](a, 'PRY')
+a['_expand'](a, ']', 'pry')
 del pry
 
 
@@ -369,13 +369,14 @@ del defaultlist
 
 
 
-def _makestack(x):
-    x.update({ '_DATA_STACK': dict(map(
+def _clear(x):
+    x['_DATA_STACK'] = dict(map(
         lambda name: (name, x['_Python']['defaultlist'](x)),
-        'TOP SUB REST'.split())) })
+        'TOP SUB REST'.split()))
 
-a['_include'](a, _makestack)
-del _makestack
+a['_include'](a, _clear)
+a['_expand'](a, 'CLEAR', '_clear')
+del _clear
 
 
 
@@ -502,9 +503,19 @@ def read(x):
             file.close()
             inn.pop()
 
-a['_Python'].update({ 'read': read })
+a['_Python']['read'] = read
 del read
 
+
+
+def readRest(x):
+    PY = x['_Python']
+    file = PY['drop'](x)
+    PY['push'](x, ''.join(file))
+
+a['_Python']['readRest'] = readRest
+a['_expand'](a, 'READREST', 'readRest')
+del read
 
 
 def preprocess(string):
@@ -548,6 +559,7 @@ def cede(x):
         x['_Python']['_execute'](x)
 
 a['_include'](a, cede)
+a['sail'] = a['_Python']['cede']
 del cede
 
 
@@ -556,7 +568,7 @@ def cede_(x):
     x['_ATTN'][0] = False
 
 a['_include'](a, cede_)
-a['_expand'](a, 'CEDE', 'cede_')
+a['_expand'](a, 'ZZ', 'cede_')
 del cede_
 
 
@@ -604,19 +616,6 @@ def callstarstar(x):
 a['_include'](a, callstarstar)
 a['_expand'](a, '(**)', 'callstarstar')
 del callstarstar
-
-
-
-def appendleft(x):
-    PY = x['_Python']
-    Obj = PY['drop'](x)
-    ITEM = PY['drop'](x)
-    Obj.appendleft(ITEM)
-    PY['push'](x, Obj)
-
-a['_include'](a, appendleft)
-a['_expand'](a, 'LAPPEND', 'appendleft')
-del appendleft
 
 
 
@@ -773,9 +772,21 @@ a['_Python']['_cold'](a)
 # EXTEND ARIADNE IN TERMS OF ITSELF.
 # WHEN THE FOLLOWING LINE EXECUTES,
 # WE'RE NOT IN KANSAS ANYMORE.
-a['py']['cede'](a)
+a['py']['sail'](a)
 
 \# :   `DROP `   ;
+
+int EVAL   _INT =
+_INT\ (1)   # :;
+
+list EVAL _list =
+_list\ () list :;
+
+1 # ONE =
+0 # ZERO =
+ZERO\ ] FIRST :;
+ONE\ ] SECOND :;
+-1\ #\ ] LAST :;
 
 \
 BLANK =
@@ -785,9 +796,6 @@ BLANK REST   NULL =
 False EVAL   False =
 
 True EVAL   True =
-
-int EVAL   _INT =
-_INT\ (1)   # :;
 
 float EVAL   _FLOAT =
 _FLOAT\ (1)   #f :;
@@ -800,17 +808,13 @@ SWAP\ _+   +   :;
              FORTH\ FORTH   2FORTH :;
 OVER\ 2BACK\ DROP\ 2FORTH     SWAP :;
   BACK\ SWAP\ FORTH\ SWAP     ROLL :;
-               ROLL\ ROLL    2ROLL :;
-BACK\ 2ROLL\ FORTH\ 2ROLL    2SWAP :;
+               ROLL\ ROLL   UNROLL :;
+BACK\ UNROLL\ FORTH\ UNROLL  2SWAP :;
                 DUP\ BACK     COPY :;
 
-from\ collections\ import\ deque   EXEC
-SELF _Python PRY deque PRY   _DEQUE =
-_DEQUE\ ()   DEQUE :;
-
-DEQUE\     LAPPEND SINGLETON :;
-SINGLETON\ LAPPEND      PAIR :;
-PAIR\      LAPPEND   TRIPPLE :;
+list\ APPEND SINGLETON :;
+SWAP\ SINGLETON\ APPEND      PAIR :;
+UNROLL\ PAIR\ APPEND   TRIPPLE :;
 
 BACK\ PAIR\ FORTH\ (*)   (2) :;
 
@@ -829,12 +833,15 @@ unhex :;
 chr EVAL _chr =
 _chr\ (1) chr :;
 
-unhex\ chr U+ :;
+9 # chr   TAB =
+10 # chr   LF =
 
-DEQUE __LOOP_NAMES__ =
-0xee01 unhex chr __LOOP_NAMES__ APPEND DROP
+0x HEXPREFIX =
 
--1\ #\ PRY LAST :;
+HEXPREFIX\ SWAP\ +\ unhex\ chr U+ :;
+
+list __LOOP_NAMES__ =
+ee01 U+ __LOOP_NAMES__ APPEND DROP
 
 READ
 __LOOP_NAMES__   DUP LAST   DUP LAST   + SWAP APPEND DROP
@@ -855,7 +862,6 @@ _WHILEA1 SWAP + _WHILEA2 +  OVER :; EXECUTE
 READ
 __LOOP_NAMES_DEC__
 + WHILE :;
-
 
 READ
 BUILD UP FN21 TO ENABLE ADOPTION OF BINARY OPERATORS.
@@ -912,9 +918,43 @@ print EVAL _print =
 iter1\ _print\ (*)\ DROP   ?? :;
 
 READ
-SELF _DICTIONARY PRY keys . ()
+SELF _DICTIONARY ] keys . ()
 _WORDS :;
 
 _WORDS\ ??   WORDS :;
 
 REST\ _WORDS\ in   FIND :;
+
+lambda\ x,start:x[start:]   EVAL   _:] =
+_:]\ (2)   :] :;
+
+COPY\ `_\ REST\ SWAP\ +\ COPY\ =   _FN2a1 :;
+FORTH\ BLANK\ +\ `(2)\ REST\ +\ BLANK\ +\ FORTH\ :;   _FN2a2 :;
+_FN2a1\ _FN2a2 FN2a :;
+
+lambda\ x,y:x[:y] EVAL [: FN2a
+
+READ\ 5\ #\ :]   TEXT :;
+
+FORTH\ DROP   BDROP :;
+
+READ
+WHY-DOESNT-THIS-WORK?--EBB-IS-NOT-FUNCTIONING-AS EXPECTED.
+READ
+_!TEXT! : `READ ` ;
+READ
+_!TEXT!\ BACK   _!TEXT!_START_UP :;
+READ
+DUP\ FORTH\ COPY\ !=\ IF\ _!TEXT!\ EBB\ NOP   _!TEXT!_MAIN :;
+READ
+_!TEXT!_START_UP\ _!TEXT!_MAIN\ BDROP   !TEXT! :;
+\# \# \# \# \#
+
+
+
+from\ sys\ import\ stdin   EXEC
+SELF _Python ] stdin ]   STDIN =
+
+STDIN\ READREST   ''' :;
+
+
