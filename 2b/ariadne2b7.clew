@@ -1,0 +1,183 @@
+\# :   `DROP `   ;
+
+int EVAL   _INT =
+_INT\ (1)   # :;
+
+list EVAL _list =
+_list\ () list :;
+
+1 # ONE =
+0 # ZERO =
+ZERO\ ] FIRST :;
+ONE\ ] SECOND :;
+-1\ #\ ] LAST :;
+
+\
+BLANK =
+
+BLANK REST   NULL =
+
+False EVAL   False =
+
+True EVAL   True =
+
+float EVAL   _FLOAT =
+_FLOAT\ (1)   #f :;
+
+lambda\ x:x['_Python']['push'](x,x['_Python']['drop'](x)+\ x['_Python']['drop'](x))   _+   CODE
+SWAP\ _+   +   :;
+
+               DROP\ DROP    2DROP :;
+               BACK\ BACK    2BACK :;
+             FORTH\ FORTH   2FORTH :;
+OVER\ 2BACK\ DROP\ 2FORTH     SWAP :;
+  BACK\ SWAP\ FORTH\ SWAP     ROLL :;
+               ROLL\ ROLL   UNROLL :;
+BACK\ UNROLL\ FORTH\ UNROLL  2SWAP :;
+                DUP\ BACK     COPY :;
+
+COPY\ FIRST\ FORTH\ SECOND   DECOUPLE :;
+
+list\ APPEND SINGLETON :;
+SWAP\ SINGLETON\ APPEND      PAIR :;
+UNROLL\ PAIR\ APPEND   TRIPPLE :;
+
+
+
+BACK\ PAIR\ FORTH\ (*)   (2) :;
+
+getattr EVAL   _. =
+_.\ (2)   . :;
+
+int EVAL _#2 =
+READ
+PAIR _#2 (*)
+#2 :;
+
+READ
+16 # #2
+unhex :;
+
+chr EVAL _chr =
+_chr\ (1) chr :;
+
+9 # chr   TAB =
+10 # chr   LF =
+
+0x HEXPREFIX =
+
+HEXPREFIX\ SWAP\ +\ unhex\ chr U+ :;
+
+list __LOOP_NAMES__ =
+ee01 U+ __LOOP_NAMES__ APPEND DROP
+
+READ
+__LOOP_NAMES__   DUP LAST   DUP LAST   + SWAP APPEND DROP
+__LOOP_NAMES_INC__ :;
+
+READ
+__LOOP_NAMES__ pop . () DROP
+__LOOP_NAMES_DEC__ :;
+
+DUP\ IF BLANK + _WHILEA1 =
+\ EBB _WHILEA2 =
+
+READ
+__LOOP_NAMES__ __LOOP_NAMES_INC__ LAST SWAP
+READ
+_WHILEA1 SWAP + _WHILEA2 +  OVER :; EXECUTE
++
+READ
+__LOOP_NAMES_DEC__
++ WHILE :;
+
+READ
+BUILD UP FN21 TO ENABLE ADOPTION OF BINARY OPERATORS.
+\#
+
+lambda\ x,y:x   BLANK   +   _LAM2A =
+\ y                         _LAM2B =
+
+READ
+BLANK SWAP + _LAM2B + _LAM2A SWAP + EVAL
+_LAM2 :;
+
+BACK\ _LAM2\ FORTH\ =   _FN2A :;
+
+READ
+BACK COPY _FN2A   `(2)   `` REST   FORTH   +   FORTH
+_FN2B :;
+
+READ
+_FN2B :   `   `   ;
+FN2 :;
+
+READ
+DUP `_ REST SWAP + OVER FN2
+FN21 :;
+
+NULL and in is or * - ** / // % << >> & | ^ < > <= >= == != 
+`FN21 REST WHILE
+
+READ
+BUILD UP FN1 TO FACILITATE ADOPTION OF UNARY FUNCTIONS.
+\#
+
+COPY\ COPY   2COPY :;
+
+READ
+2COPY EVAL   `_ REST  FORTH  +   COPY   =
+_FN1A :;
+READ
+FORTH BLANK +   `(1) REST +   FORTH :;
+_FN1B :;
+
+_FN1A\ _FN1B   FN1 :;
+
+NULL abs all any ascii bin bool callable frozenset hash hex id
+len memoryview oct ord repr reversed 
+`FN1 REST WHILE
+
+iter EVAL _iter =
+_iter\ (1) iter1 :;
+
+print EVAL _print =
+
+iter1\ _print\ (*)\ DROP   ?? :;
+
+READ
+SELF _DICTIONARY ] keys . ()
+_WORDS :;
+
+_WORDS\ ??   WORDS :;
+
+REST\ _WORDS\ in   FIND :;
+
+lambda\ x,start:x[start:]   EVAL   _:] =
+_:]\ (2)   :] :;
+
+COPY\ `_\ REST\ SWAP\ +\ COPY\ =   _FN2a1 :;
+FORTH\ BLANK\ +\ `(2)\ REST\ +\ BLANK\ +\ FORTH\ :;   _FN2a2 :;
+_FN2a1\ _FN2a2 FN2a :;
+
+lambda\ x,y:x[:y] EVAL [: FN2a
+
+READ\ 5\ #\ :]   TEXT :;
+
+FORTH\ DROP   BDROP :;
+
+
+
+READ
+SELF   SELF _INPUTS ] FIRST   (1)   READREST
+''' :;
+
+tuple EVAL _tuple =
+_tuple\ (1) TUPLE1 :;
+
+from\ os\ import\ get_terminal_size EXEC
+READ
+SELF _Python ] get_terminal_size ] () TUPLE1
+TERMSIZE :;
+
+
