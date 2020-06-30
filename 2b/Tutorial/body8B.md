@@ -26,3 +26,5 @@ Ariadne thinks it is silly to use use _five_ symbols (open quote, close quote, s
     OK>
   
 If you think you need really long string concatenations to program Ariadne, we suggest that you break up your code into smaller phrases and definitions.
+
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body9.md)
