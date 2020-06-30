@@ -26,7 +26,7 @@ and the Return Stack with
     {'TOP': [1], 'SUB': [('QUERY',)], 'REST': []}
     >>>
     
-You can drop one item from the Stak with
+You can drop one item from the Stack with
 
     >>> a['py']['drop'](a)
     
@@ -43,11 +43,11 @@ You can continue sailing with Ariadne with:
 ## Heal Ariadne while She Sleeps
 
 While Ariadne is asleep, you can whisper in her ear what she should do when she wakes up.
-Perhaps there is a word called `!TEXT!` that she should interpret:
+Perhaps there is a word called `'''` that she should interpret:
 
-    >>> a['py']['rpush'](a, ('!TEXT!',))
+    >>> a['py']['rpush'](a, ("'''",))
     >>> a['r']
-    {'TOP': [1], 'SUB': [('!TEXT!',)], 'REST': [(('QUERY',), 0)]}
+    {'TOP': [1], 'SUB': [("'''",)], 'REST': [(('QUERY',), 0)]}
     >>>
 
 ([continue](https://github.com/dmparrishphd/Python4th/edit/master/2b/Tutorial/body8.md))
