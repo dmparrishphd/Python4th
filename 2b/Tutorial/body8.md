@@ -51,7 +51,7 @@ But you can use them if you _want_ to have quotes your strings:
     S>> '' '' 'spam eggs' "doesn't"
     OK> "Yes,"\ they\ said.
     S>> '' 'spam eggs' "doesn't" '"Yes," they said.'
-    OK> "Isn't"\ they said.
+    OK> "Isn't"\ they\ said.
     S>> "doesn't" '"Yes," they said.' '"Isn\'t" they' 'said.'
     
 You can use `?` to drop the top item of the Stack and print it:
