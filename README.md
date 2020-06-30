@@ -12,6 +12,10 @@ Forth, written in Python 3
 
 [Why](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/why.MD) write Forth in Python 3?
 
+## Ariadne IIb
+
+[Released](https://github.com/dmparrishphd/Python4th/tree/master/2b) for July "Forth" 2020.
+
 ## Ariadne IIa
 
 [Pre-release](https://github.com/dmparrishphd/Python4th/tree/master/2a) of July "Forth" 2020 edition.
