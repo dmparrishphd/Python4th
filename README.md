@@ -9,7 +9,7 @@ Forth, written in Python 3
 > [Some popular languages are] syntax-heavy.
 > Learning all that syntax is just horrible....
 > **[One] thing we want** out of our languages is **simplicity... of syntax**.
-> Think of a language like **Forth**. ---Robert "Uncle Bob" Martin (2020-03-31) "The Last Programming Language." Clean Coders. https://www.youtube.com/watch?v=P2yr-3F6PQo
+> Think of a language like **Forth**. ---Robert "Uncle Bob" Martin (2020-03-31) "The Last Programming Language." Clean Coders. https://www.youtube.com/watch?v=P2yr-3F6PQo&t=38m2s
 
 The goals of Python Forth include:
 
