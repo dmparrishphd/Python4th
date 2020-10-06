@@ -1357,9 +1357,9 @@ class cluster:
         if 0 <= self.Ring[0][0]:
             self.Ring.popleft()
         else:
-            print("Can't drop master node.")
-    def __init__(self, names=('/Master/', '/Slave 0/', '/Slave 1/')):
-        '''Slave 1 is the name of Boba Fett's ship.
+            print("Can't drop main node.")
+    def __init__(self, names=('/Main/', '/Subordinate 0/', '/Subordinate 1/')):
+        '''Subordinate 1 is the name of Boba Fett's ship.
         '''
         self.Ring = deque(enumerate(map(computer, names), -1))
                 # THE ONE NUMBERED -1 IS SPECIAL. SEE LOGIC IN
@@ -1410,11 +1410,11 @@ class forth:
     '''Coordinates computation among the computer-s
     '''
     def __init__(self,
-        computer_names=('/Master/',
-            '/Slave 0/', '/Slave 1/',
-            '/Slave 2/', '/Slave 3/',
-            '/Slave 4/', '/Slave 5/',
-            '/Slave 6/', '/Slave 7/'),
+        computer_names=('/Main/',
+            '/Subordinate 0/', '/Subordinate 1/',
+            '/Subordinate 2/', '/Subordinate 3/',
+            '/Subordinate 4/', '/Subordinate 5/',
+            '/Subordinate 6/', '/Subordinate 7/'),
         save=[]):
         '''Creates one or more computers (one for each of the
         computer_names) and begins execution of the first one.
