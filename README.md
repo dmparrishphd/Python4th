@@ -2,7 +2,7 @@
 
 Forth, written in Python 3
 
-## Hello, World
+## Hello, World!
 
 In Python 4th, the ["Hello, World" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) can be written in _two_ words:
 
