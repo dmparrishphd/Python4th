@@ -23,7 +23,11 @@ The goals of Python Forth include:
 
 ## Releases
 
-### Ariadne IIb
+### Next Release
+
+Ariadne III will be aimed at a leaner, simpler code base.
+
+### Current Release: Ariadne IIb
 
 [Released](https://github.com/dmparrishphd/Python4th/tree/master/2b) for July "Forth" 2020.
 
@@ -41,10 +45,6 @@ See the example at the top of the [source code](https://github.com/dmparrishphd/
 Ariadne IIa is barely tested. The basic operations like `DUP`, `DROP`, and `OVER` seem to work, as do the two compilers (`:;` and the tripple `:`, \`, `;`).
 
 A lot of essential features are yet to be incorporated (one development goal was to get the compiler working as soon as possible).
-
-## Next Release
-
-Ariadne II (without the "a") should have a more complete set of features, and should be more thoroughly tested.
 
 ## Acknowledgements
 
