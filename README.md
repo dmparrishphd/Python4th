@@ -2,6 +2,17 @@
 
 Forth, written in Python 3
 
+## Hello, World
+
+In Python 4th, the ["Hello, World" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) can be written in _two_ words:
+
+    Hello,\ World!   ?
+ 
+No, I did not count wrong.
+`Hello,\ World!` is _one_ word;
+[here's](https://github.com/dmparrishphd/Python4th/blob/master/Doc/Why/whyWords.MD#the-forth-way)
+why.
+
 ## Goals
 
 > Let's say that we [programmers] did pick [a _single_, common] language [Chemistry, Physics, and Biology all have common languages].
