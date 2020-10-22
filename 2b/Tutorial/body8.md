@@ -37,7 +37,7 @@ That is, all but the first item.
     
 ## Quotes? Where We're Going, We Don't Need Quotes
 
-Ariadne read entire words at a time, not individual characters.
+Ariadne reads entire words at a time, not individual characters.
 Words are separated by whitespace.
 The sequence `\` followed by whitespace counts as a _graphic space_, not whitespace.
 
