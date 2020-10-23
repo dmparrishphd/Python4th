@@ -44,7 +44,8 @@ You can use in combination with other input to form multi-line strings:
     OK> ?
     TABS    TABS    TABS    TABS
     
-Ariadne does not control the amount of space output when a tab character is printed.
+_Ariadne does not control the amount of space output when a tab character is printed._
+That task is left to the environment in which Ariadne (and the underlying Python 3) are running.
 
 ## line upon line, line upon line
 
