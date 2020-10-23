@@ -50,7 +50,10 @@ That task is left to the environment in which Ariadne (and the underlying Python
 ## line upon line, line upon line
 
 The word `'''` reads the "entire" content of `stdin` (standard input, often from the keyboard).
-When entering text from the keyboard, the end of input may be indicatd by <CTRL> + Z <ENTER> (Hold down the Control key, press the Z key, release, and press the Enter key).
+
+On many systems, when entering text from the keyboard,
+the end of input may be indicatd by a special key combination, such as `CTRL` + `Z` `ENTER`
+(Hold down the Control key, press the Z key, release, and press the Enter key).
 You may see the text `^Z` appear when you presse that sequence of keys:
 
     S>> '' '' ''
