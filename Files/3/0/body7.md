@@ -50,4 +50,4 @@ Perhaps there is a word called `'''` that she should interpret:
     {'TOP': [1], 'SUB': [("'''",)], 'REST': [(('QUERY',), 0)]}
     >>>
 
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body8.md))
+([continue](./body8.md))
