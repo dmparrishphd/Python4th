@@ -74,4 +74,4 @@ You may see the text `^Z` appear when you presse that sequence of keys:
 
 `'''` reads from `stdin` only. Beware of this if you use `'''` in a file to be loaded by Ariadne \[forthcoming feature\].
 
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body8B.md))
+([continue](./body8B.md))
