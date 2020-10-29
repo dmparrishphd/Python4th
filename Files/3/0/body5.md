@@ -8,4 +8,4 @@ These first five parts have introduced Ariadne's ways of
 * making decisions (`IF`), and
 * making numbers (`#`)
 
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body6.md))
+([continue](./body6.md))
