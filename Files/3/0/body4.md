@@ -68,4 +68,4 @@ For this reason, and because the top four elements of the Stack are printed just
 
 
 
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body5.md))
+([continue](./body5.md))
