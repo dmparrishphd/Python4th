@@ -1,0 +1,309 @@
+\#  :   `DROP `   ;
+
+!:-
+DROP DROP
+2DROP :;
+!:-
+BACK BACK
+2BACK :;
+!:-
+FORTH FORTH
+2FORTH :;
+!:-
+OVER 2BACK DROP 2FORTH
+SWAP :;
+
+((),{}) EVAL   NOARGS =
+!:-
+NOARGS SWAP CALL
+() :;
+
+dict EVAL   _{} =
+!:-
+_{} ()
+{} :;
+
+list EVAL   _[] =
+!:-
+_[] ()
+[] :;
+
+!:-
+OVER BACK EXECUTE DROP FORTH
+_MUTATE :;
+!:-
+_MUTATE ( x xt -- x; xt EXECUTE should consume x )
+\#
+
+lambda\ x:x['_Python']['drop'](x).append(x['_Python']['drop'](x))
+_>>! CODE
+!:-
+'_>>! ' _MUTATE
+>>! :;                     \ APPEND \#
+
+!:-
+[] >>!
+SINGLETON :;
+
+!:-
+SWAP >>!
+, :;
+!:-
+SWAP SINGLETON >>!
+PAIR :;
+
+!:-
+BACK SINGLETON {} PAIR FORTH CALL
+(1) :;
+!:-
+BACK PAIR {} PAIR FORTH CALL
+(2) :;
+
+getattr EVAL   _. =
+!:-
+_. (2)
+. :;
+
+int EVAL   _# =
+!:-
+_# (1)
+# :;
+
+_] : `__getitem__ `  `. ` ;
+]  : `SWAP ` `_] ` `(1) ` ;
+
+
+
+\
+BL =
+
+!:-
+BACK SWAP FORTH SWAP
+ROLL :;
+!:-
+ROLL ROLL
+UNROLL :;
+!:-
+BACK UNROLL FORTH UNROLL
+2SWAP :;
+!:-
+DUP BACK
+COPY :;
+!:-
+OVER OVER
+2DUP :;
+!:-
+COPY OVER BACK
+2COPY :;
+!:-
+FORTH COPY
+RECALL :;
+
+
+
+!:-
+UNROLL PAIR >>!
+TRIPPLE :;
+
+
+1 #   ONE =
+0 #   ZERO =
+!:-
+ZERO ]
+FIRST :;
+!:-
+ONE ]
+SECOND :;
+!:-
+-1 # ]
+LAST :;
+
+
+\ REPLACEMENT \#
+
+lambda\ xkv:xkv[0].__setitem__(xkv[1],xkv[2])
+__]= CODE 
+
+lambda\ x:x['_DATA']['__]='](x['_Python']['drop'](x))
+_]= CODE
+
+!:-
+TRIPPLE '_]= ' _MUTATE FIRST
+]= :;
+
+
+BL '   NULL =
+
+False EVAL False =
+
+True EVAL   True =
+
+float EVAL   _FLOAT =
+!:-
+_FLOAT (1)
+#f :;
+
+
+lambda\ x:x['_Python']['_push'](x,x['_Python']['drop'](x)+\ x['_Python']['drop'](x))   _+   CODE
+!:-
+SWAP _+ DROP
++ :;
+
+!:-
+TRIPPLE SWAP SINGLETON SWAP +
+QUAD :;
+
+!:-
+'pop ' . ()
+pop :;
+!:-
+DUP pop SWAP pop
+2POP :;
+
+!:-
+DUP 2POP BACK , FORTH ,
+.SWAP :;
+
+!:-
+BACK OVER BACK ] 2FORTH ]
+2] :;
+
+!:-
+BACK {} PAIR FORTH CALL
+(*) :;
+
+int EVAL _#2 =
+!:-
+PAIR _#2 (*)
+#2 :;
+
+!:-
+16 # #2
+unhex :;
+
+chr EVAL _chr =
+!:-
+_chr (1)
+chr :;
+
+9 # chr   TAB =
+10 # chr   LF =
+
+0x HEXPREFIX =
+
+!:-
+HEXPREFIX SWAP + unhex chr
+U+ :;
+
+
+!:-
+IF RECALL EXECUTE EBB
+_WHILE :;
+!:-
+BACK _WHILE FORTH DROP
+WHILE :;
+
+
+!:-
+RECALL EXECUTE IF EBB
+_REPEAT :;
+REPEAT : `BACK `   `_REPEAT ` ;
+
+!:-
+-1 # +
+1- :;
+
+
+
+
+
+\ BINARY\ OPERATORS  \#
+
+lambda\ x,y:x   BL   +   _LAM2A =
+\ y                      _LAM2B =
+
+!:-
+BL SWAP + _LAM2B + _LAM2A SWAP + EVAL
+_LAM2 :;
+!:-
+BACK _LAM2 FORTH =
+_FN2A :;
+
+!:-
+BACK COPY _FN2A   `(2)   `` '   FORTH   +   FORTH
+_FN2B :;
+
+!:-
+_FN2B :   `   `   ;
+FN2 :;
+
+!:-
+DUP '_ ' SWAP + OVER FN2
+FN21 :;
+
+TEMP :   `FN21 `   `DUP `  ;
+NULL and in is or * - ** / // % << >> & | ^ < > <= >= == != 
+'TEMP ' REPEAT
+'TEMP DDROP
+
+
+
+\ UNARY\ FUNCTIONS \#
+
+!:-
+COPY EVAL '_ ' RECALL + COPY = FORTH BL + '(1) ' + FORTH :;
+FN1 :;
+
+!:-
+DUP IF FN1 DUP
+'TEMP ' :;
+
+NULL abs all any ascii bin bool callable frozenset hash hex id
+len memoryview oct ord repr reversed iter tuple
+'TEMP ' REPEAT
+'TEMP DDROP
+
+print EVAL _print =
+
+!:-
+iter _print (*) DROP
+?? :;
+
+!:-
+SELF _DICTIONARY ] keys . ()
+_WORDS :;
+
+_WORDS\ ??   WORDS :;
+
+!:-
+_WORDS in
+FIND :;
+
+lambda\ x,start:x[start:]   EVAL   _:] =
+_:]\ (2)   :] :;
+
+lambda\ x,end:x[:end]   EVAL   _[: =
+_[:\ (2)   [: :;
+
+BACK\ TRIPPLE\ FORTH\ (*)   (3) :;
+
+lambda\ x,start,end:x[start:end]   EVAL   _[:] =
+_[:]\ (3)   [:] :;
+
+NULL 'join ' .   _JOIN =
+JOIN :   `_JOIN `   `(1) `   ;
+
+!:-
+SELF   DUP '_INPUTS ' ]   LAST   (1)
+INFILE :;
+
+!:--- :   `INFILE `   `JOIN `   ;
+
+from\ os\ import\ get_terminal_size   EXEC
+
+!:-
+SELF _Python ] get_terminal_size ] () tuple
+TERMSIZE :;
+
+PUNCH :   `BACK `   `DROP `    `FORTH `   ;
+KICK  :   `BACK `   `PUNCH `   `FORTH `   ;
