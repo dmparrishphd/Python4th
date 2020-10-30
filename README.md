@@ -35,7 +35,7 @@ The goals of Python Forth include:
 
 ## Why?
 
-[Why](.Doc/Why/why.MD) write Forth in Python 3?
+[Why](./Doc/Why/why.MD) write Forth in Python 3?
 
 ## Releases
 
