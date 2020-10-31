@@ -10,9 +10,9 @@ Their representation is determined by Python 3.
 In the above examaple, there are four null strings (`str`) on the top of the Stack.
 The more recent items on the Stack are displayed further to the _right_.
 
-You can put Ariadne to sleep with `ZZ`:
+You can put Ariadne to sleep with `Z`:
 
-    OK> ZZ
+    OK> Z
     >>>
     
 When you are ready to sail with Ariadne again, tell her:
@@ -28,7 +28,7 @@ Because
 
 this means that you can _very often_ (but _not always_) execute words one at a time so as to beter understand Ariadne's behavior.
 
-Enter _the text_ `True` and Ariadne will do what _the word_ `True` means: to place the Python 3 `True` object on the Stack. **Ariadne is case sensitive** (therefore, `True`, `true`, and `TRUE` are three different things).
+Enter _the text_ `True` and Ariadne will do what _the word_ `True` means: to place the Python 3 `True` object on the Stack. **Ariadne is case sensitive** (therefore, `True`, `true`, and `TRUE` are three different words).
     
     OK> True
     S>> '' '' '' True
@@ -60,6 +60,5 @@ The second item becomes the value to place on the Stack when the new word is inv
     OK> the_world_is_flat
     S>> '' '' '' True
     OK>
-    
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/Files/3/0/body2.md))
-[continue?](./body2.md)
+
+([continue?](./body2.md))
