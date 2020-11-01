@@ -49,7 +49,7 @@ That task is left to the environment in which Ariadne (and the underlying Python
 
 ## line upon line, line upon line
 
-The word `!:---` reads the "entire" content of `stdin` (standard input, often from the keyboard).
+The word `!:---` reads the "remainder" of the current intput file (could be `stdin`---standard input---often from the keyboard).
 
 On many systems, when entering text from the keyboard,
 the end of input may be indicatd by a special key combination, such as `CTRL` + `Z` `ENTER`
