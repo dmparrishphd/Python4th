@@ -10,7 +10,7 @@ The Return Stack tells Ariadne what to do next.
 1. The top element of the Stack is removed.
 2. If that item is equivalent to `False` (or if it is not equivalent to `True`):
     1. The present operation (`IF` itself) is canceled and
-    2. The following operation (the definition in which `IF` occurs) is also canceled.
+    2. The following operation (the rest of the definition in which `IF` occurs) is also canceled.
 3. Otherwise, processing continues with the next word after `IF`.
   
  ### Then
