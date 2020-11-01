@@ -17,21 +17,25 @@ How 'bout `DROP`?
 Oops!
 Since `DROP` is defined, Ariadne applied the definition of `DROP`, which is to drop the top item from the Stack.
 Let's try again.
-Hint: Ariadne defines exactly one word that begins with the accent grave, `` ` ``, +(a.k.a, backquote), `` ` ``; that is, Ariadne defines the word `` ` ``.
+Hint: Ariadne defines exactly one word that begins with the single quote,
+`'`, (a.k.a, tick mark);
+that is, Ariadne defines the word `'`.
+That's right: Ariadne does not care which characters are used in words,
+as long as they are all graphic characters.
 
     S>> '' '' '' ''
     OK> Ruth
     S>> '' '' '' 'Ruth'
-    OK> `DROP
-    S>> '' '' 'Ruth' '`DROP'
+    OK> 'DROP
+    S>> '' '' 'Ruth' "'DROP"
     
-Except for `` ` ``, Ariadne will place any word containing `` ` `` on the Stack.
+Except for the word `'`, Ariadne will place any word beginning with `'` on the Stack.
 
-But we wanted `DROP` on the Stack, not `` `DROP ``. You can use `REST` to replace the object on the top of Stack with the _rest_ of the object.
+But we wanted `DROP` on the Stack, not `'DROP`. You can use `'` to replace the object on the top of Stack with the _rest_ of the object.
 That is, all but the first item.
 
     S>> '' '' 'Ruth' '`DROP'
-    OK> REST
+    OK> '
     S>> '' '' 'Ruth' 'DROP'
     
     
@@ -52,7 +56,7 @@ But you can use them if you _want_ to have quotes your strings:
     OK> "Yes,"\ they\ said.
     S>> '' 'spam eggs' "doesn't" '"Yes," they said.'
     OK> "Isn't"\ they\ said.
-    S>> "doesn't" '"Yes," they said.' '"Isn\'t" they' 'said.'
+    S>> 'spam eggs' "doesn't" '"Yes," they said.' '"Isn\'t" they' 'said.'
     
 You can use `?` to drop the top item of the Stack and print it:
 
