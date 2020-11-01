@@ -46,9 +46,9 @@ Then `FLAT-WORLD-WARN-MAYBE`.
 Then `:;`
 
     OK> the_world_is_flat\ IF\ FLAT-WORLD-WARNING\ ?
-    S>> '' '' '' 'the_world_is_flat IF FLAT-WORLD-WARNING ?'
+    S>> '' '' '' *
     OK>> FLAT-WORLD-WARN-MAYBE
-    S>> '' '' 'the_world_is_flat IF FLAT-WORLD-WARNING ?' 'FLAT-WORLD-WARN-MAYBE'
+    S>> '' '' * 'FLAT-WORLD-WARN-MAYBE'
     OK>> :;
     S>> '' '' '' ''
    
@@ -56,6 +56,9 @@ Then `:;`
 This means that any word you enter that contains a space will not have a definition.
 When you entered `the_world_is_flat\ IF\ FLAT-WORLD-WARNING\ ?`,
 Ariadne simply placed the string on the Stack.
+
+If the Python 3 representation of an item is long,
+Ariadne will dispay an asterisk (\*) as the representation of that item.
 
 Before you entered `:;`, `FLAT-WORLD-WARN-MAYBE` was undefined.
 So it, too, goes onto the Stack.
@@ -70,5 +73,17 @@ Enter the text `FLAT-WORLD-WARN-MAYBE`.
     OK>
     
 Ariadne puts out (issues) a warning, because, apparently, `the_world_is_flat`. If you say so.
+
+You can ask Ariadne to show you the representation of the item on the top of the stack using `?`:
+
+    OK> 'x'*80 EVAL
+    S>> '' '' '' *
+    OK> ?
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    S>> '' '' '' ''
+
+(Whether a representation is long is relative to the console,
+so if your console has many columns,
+you may need to use a number larger than 80 to have Ariadne display the top item as `*`)
 
 ([continue](./body3.md))
