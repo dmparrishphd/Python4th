@@ -28,10 +28,10 @@ You can use in combination with other input to form multi-line strings:
     OK> C:\some\name ?
     C:\some\name
     
- There are a number of ways to specify non-graphic chaarcters:
+ There are a number of ways to specify non-graphic charcters:
  
     S>> '' '' '' ''
-    OK> BLANK
+    OK> BL
     S>> '' '' '' ' '
     OK> LF
     S>> '' '' ' ' '\n'
@@ -49,12 +49,15 @@ That task is left to the environment in which Ariadne (and the underlying Python
 
 ## line upon line, line upon line
 
-The word `'''` reads the "entire" content of `stdin` (standard input, often from the keyboard).
+The word `!:---` reads the "entire" content of `stdin` (standard input, often from the keyboard).
 
 On many systems, when entering text from the keyboard,
 the end of input may be indicatd by a special key combination, such as `CTRL` + `Z` `ENTER`
-(Hold down the Control key, press the Z key, release, and press the Enter key).
-You may see the text `^Z` appear when you presse that sequence of keys:
+(Hold down the Control key, press the Z key, release, and press the Enter key)
+or `CTRL` + `D`.
+You may see the text `^Z` appear when you presse that sequence of keys.
+In the example below, the user does not type `^Z`, but `CTRL` + `Z` `ENTER`.
+Your system may require different keystrokes to indicate end-of-file.
 
     S>> '' '' ''
     OK> '''
@@ -70,8 +73,9 @@ You may see the text `^Z` appear when you presse that sequence of keys:
 
     S>> '' '' ''
 
-\[[TPB](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/References.md#TPB)\]
+\[[TPB](./References.md#TPB)\]
 
-`'''` reads from `stdin` only. Beware of this if you use `'''` in a file to be loaded by Ariadne \[forthcoming feature\].
+`!:---` is _intended_ to read from whatever is the current file, but it has been tested for `stdin` (keyboard) only.
+Beware of this if you use `!:---` in a file to be loaded by Ariadne.
 
 ([continue](./body8B.md))
