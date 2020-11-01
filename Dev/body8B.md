@@ -4,7 +4,7 @@
 
 The `+` and `*` operators accomplish string concatenation and repetition ([TPB]()):
 
-    S>> '' '' ''
+    S>> '' '' '' ''
     OK> "Do\ you\ promise\ not\ to\ hurt\ him?" LF +   "What\ was\ that?" LF +   2 # *   + ?
     "Do you promise not to hurt him?"
     "What was that?"
@@ -12,7 +12,7 @@ The `+` and `*` operators accomplish string concatenation and repetition ([TPB](
     
     S>> '' '' ''
   
-[Python 3 contatenats addjacent strings](https://docs.python.org/3/tutorial/introduction.html#strings):
+[Python 3 contatenates addjacent strings](https://docs.python.org/3/tutorial/introduction.html#strings):
 
     >>> 'Py' 'thon'
     'Python'
@@ -25,6 +25,7 @@ Ariadne thinks it is silly to use use _five_ symbols (open quote, close quote, s
     S>> '' '' '' 'Ariadne'
     OK>
   
-If you think you need really long string concatenations to program Ariadne, we suggest that you break up your code into smaller phrases and definitions.
+If you think you need really long string concatenations to program Ariadne,
+we suggest that you break up your code into smaller phrases and definitions.
 
 ([continue](./body9.md))
