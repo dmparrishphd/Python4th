@@ -34,7 +34,7 @@ Except for the word `'`, Ariadne will place any word beginning with `'` on the S
 But we wanted `DROP` on the Stack, not `'DROP`. You can use `'` to replace the object on the top of Stack with the _rest_ of the object.
 That is, all but the first item.
 
-    S>> '' '' 'Ruth' '`DROP'
+    S>> '' '' 'Ruth' "'DROP"
     OK> '
     S>> '' '' 'Ruth' 'DROP'
     
