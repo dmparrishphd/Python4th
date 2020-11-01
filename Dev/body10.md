@@ -77,3 +77,5 @@ Note that Python 3 requires three distinct symbols and a special,
 complex interpretation to accomplish slicing a specified range,
 Ariadne requires only one symbol and can (and does) apply consistent interpretation
 (words separated by whitespace, words applied in the order encountered).
+
+([continue](./body11.md))
