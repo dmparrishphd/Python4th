@@ -26,9 +26,13 @@ But for those cases, it may be better to use special words.
 Ariadne defines `FIRST`, `SECOND`, and `LAST`:
 
 > `1 # ONE =`
+
 > `0 # ZERO =`
+
 > `ZERO\ ] FIRST :;`
+
 > `ONE\ ] SECOND :;`
+
 > `-1\ #\ ] LAST :;`
     
 You might use them like this:
