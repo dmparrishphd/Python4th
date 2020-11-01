@@ -2,7 +2,7 @@
 
 ## Say Again
 
-The `+` and `*` operators accomplish string concatenation and repetition ([TPB]()):
+The `+` and `*` operators accomplish string concatenation and repetition ([TPB](./References.md)):
 
     S>> '' '' '' ''
     OK> "Do\ you\ promise\ not\ to\ hurt\ him?" LF +   "What\ was\ that?" LF +   2 # *   + ?
