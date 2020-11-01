@@ -31,3 +31,5 @@ but this is not so. The meaning of `,` is,
 "drop the item on top of the Stack and append it to the second item on the Stack."
 The `,` word---like all words Ariadne knows---has power in and of itself;
 it is not a second-class, silent punctuation mark, but a first class **word** that "speaks" for itself.
+
+([continue](./body12.md))
