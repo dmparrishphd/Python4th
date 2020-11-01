@@ -22,14 +22,14 @@ I may seem like extra work to use `#` at this point.
 However, I think it is unusual to use "hard coded" numbers or "magic numbers" for indexing.
 Usually, the index is computed.
 The special cases of wanting the first and second elments come up a lot.
-But for those cased, it may be better to use special words.
+But for those cases, it may be better to use special words.
 Ariadne defines `FIRST`, `SECOND`, and `LAST`:
 
-    1 # ONE =
-    0 # ZERO =
-    ZERO\ ] FIRST :;
-    ONE\ ] SECOND :;
-    -1\ #\ ] LAST :; 
+> `1 # ONE =`
+> `0 # ZERO =`
+> `ZERO\ ] FIRST :;`
+> `ONE\ ] SECOND :;`
+> `-1\ #\ ] LAST :;`
     
 You might use them like this:
     
