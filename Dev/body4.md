@@ -25,7 +25,7 @@ This symbol represents the integer (Python 3 `int`) value 1, _not_ the string `'
 
 Input comes to Ariadne as Python 3 strings (`str`).
 Ariadne uses strings as the fundamental type
-(see also "Why Strings Are the Correct Fundamental Data Type" [forthcoming]).
+(see also ("Why String (`str`) is Are the Correct Fundamental Data Type")[./whyString.md]).
 **Ariadne does not waste time guessing what a string means.**
 If you want the string `'1'` to mean the integer `1`, say so.
 
@@ -39,33 +39,38 @@ I hope you find Ariadne's definition of `#` to be both coherent and consistent.
 
 Ariadne has `#f` word in case you really need to use floating point values:
 
-    S>> '' ''
+    S>> '' '' '' ''
     OK> 3.14 #f
-    S>> '' '' 3.14
+    S>> '' '' '' 3.14
 
-Python 3 has an elaborate [operator precedence scheme](https://docs.python.org/3/reference/expressions.html) in which the operators (e.g., `+`, `-`) are organized into 18 (**eighteen**) different ranks in order to decide which operation to perform in what order.
+Python 3 has an elaborate
+[operator precedence scheme](https://docs.python.org/3/reference/expressions.html)
+in which the operators (e.g., `+`, `-`)
+are organized into 18 (**eighteen**)
+different ranks in order to decide which operation to perform in what order.
 
-Forth simply performs the operations in the order encountered.
+Ariadne simply performs the operations in the order encountered.
 
 
-    S>> '' ''
+    S>> '' '' '' ''
     OK> 4 #
-    S>> '' '' 4
+    S>> '' '' '' 4
     OK> 3.75 #f
     S>> '' '' 4 3.75
     OK> *
-    S>> '' '' 15.0
+    S>> '' '' '' 15.0
     OK> 1 #
     S>> '' '' 15.0 1
     OK> -
-    S>> '' '' 14.0
+    S>> '' '' '' 14.0
     OK>
 
 Python 3 has a special variable, `_`, that stores the most recent printed expression.
-That feature can be nice when [using Python 3 like a calculator](https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator).
+That feature can be nice when
+[using Python 3 like a calculator](https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator).
 Ariadne stores the result of arithmetic operations on the top of the Stack.
-For this reason, and because the top four elements of the Stack are printed just before the OK prompt, no such special variable is necessary.
-
-
+For this reason, and
+because the top four elements of the Stack are printed just before the OK prompt,
+no such special variable is necessary.
 
 ([continue](./body5.md))
