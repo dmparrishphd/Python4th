@@ -45,7 +45,10 @@ The goals of Python Forth include:
 
 ### Earlier Releases
 
-[Ariadne IIb](./Files/2/0) for July "Forth" 2020.
+<a id="AriadneIIb">Ariadne IIb</a>,
+released for July "Forth" 2020
+\[[Doc](.Files/3/0/frontmatter.md)\]
+\[[Code](./Files/2/0)\]
 
 Ariadne IIa [(Pre-release)](./Files/1/0) of July "Forth" 2020 edition; accompanies
 ["Why can't Python deepcopy stdin?"](https://stackoverflow.com/questions/62373655/why-cant-python-deepcopy-stdin)
