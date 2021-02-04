@@ -47,7 +47,7 @@ The goals of Python Forth include:
 
 <a id="AriadneIIb">Ariadne IIb</a>,
 released for July "Forth" 2020
-\[[Doc](.Files/3/0/frontmatter.md)\]
+\[[Doc](./Files/3/0/frontmatter.md)\]
 \[[Code](./Files/2/0)\]
 
 Ariadne IIa [(Pre-release)](./Files/1/0) of July "Forth" 2020 edition; accompanies
