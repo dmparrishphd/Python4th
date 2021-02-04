@@ -1,6 +1,6 @@
 # Ariadne II Tutorial
 
-([Python 4th Home](../../..))
+([Python 4th Home](../../../README.md))
 
 **Warning**: this is a working document, subject to change and obsolescence at any time.
 
