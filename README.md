@@ -19,13 +19,13 @@ why.
 
 > [One] thing we want out of our languages is simplicity... of syntax.
 > Think of a language like Forth.
-([Robert "Uncle Bob" Martin](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/theLastProgrammingLanguage.md))
+\[[Robert "Uncle Bob" Martin](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/theLastProgrammingLanguage.md)\]
 
 > very small [programs allow] the [end-user] to use their visual field
 > as an augmentation to their short term memory,
 > and **that is the critical thing** in end-user programming.
+> \[[Alan Kay](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/smallPrograms.md); emphasis added\]
 
-([Alan Kay](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/smallPrograms.md); emphasis added)
 
 The goals of Python Forth include:
 
