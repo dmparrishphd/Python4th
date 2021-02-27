@@ -17,9 +17,9 @@ why.
 
 ## Goals
 
-> [One] thing we want out of our languages is simplicity... of syntax.
+> [One] thing we want out of our languages is **simplicity... of syntax**.
 > Think of a language like Forth.
-\[[Robert "Uncle Bob" Martin](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/theLastProgrammingLanguage.md)\]
+\[[Robert "Uncle Bob" Martin](https://github.com/dmparrishphd/home/blob/main/Files/CORW/0/theLastProgrammingLanguage.md); emphasis added\]
 
 > very small [programs allow] the [end-user] to use their visual field
 > as an augmentation to their short term memory,
