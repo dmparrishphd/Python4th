@@ -1,8 +1,10 @@
-# Python 4th (Python Forth)
+Python 4th (Python Forth)
+=========================
 
 Forth, written in Python 3
 
-## Hello, World!
+Hello, World!
+-------------
 
 In Python 4th, the
 ["Hello, World" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)
@@ -15,7 +17,8 @@ No, I did not count wrong.
 [here's](./Doc/Why/whyWords.MD#the-forth-way)
 why.
 
-## Goals
+Goals
+-----
 
 > [One] thing we want out of our languages is **simplicity... of syntax**.
 > Think of a language like Forth.
@@ -33,15 +36,21 @@ The goals of Python Forth include:
 - low barrier to entry,
 - extreme simplicity
 
-## Why?
+Why?
+----
 
 [Why](./Doc/Why/why.MD) write Forth in Python 3?
 
-## Releases
+Releases
+--------
 
 ### Current Release
 
 [Ariadne III](./Files/4/0)
+
+### In Development
+
+[Ari](https://github.com/dmparrishphd/home/blob/main/Files/CORW/1/0/ari.md)
 
 ### Earlier Releases
 
@@ -63,7 +72,8 @@ Ariadne IIa is barely tested. The basic operations like `DUP`, `DROP`, and `OVER
 
 A lot of essential features are yet to be incorporated (one development goal was to get the compiler working as soon as possible).
 
-## Acknowledgements
+Acknowledgements
+----------------
 
 I draw inspiration chiefly from
 [Charles H. "Chuck" Moore](https://www.youtube.com/watch?v=tb0_V7Tc5MU)
