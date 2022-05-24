@@ -7,4 +7,4 @@
 This tutorial parallels [The Python Tutorial](https://docs.python.org/3/tutorial/index.html) where possible.
 The point is to describe the unfamiliar in terms of the familiar.
 
-([continue](https://github.com/dmparrishphd/Python4th/blob/master/2b/Tutorial/body1.md))
+([continue](https://github.com/dmparrishphd/Python4th/blob/master/Files/3/0/body1.md))
