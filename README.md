@@ -50,7 +50,7 @@ Releases
 
 ### In Development
 
-[Ari](https://github.com/dmparrishphd/home/blob/main/Files/CORW/1/0/ari.md)
+[Ari](https://github.com/dmparrishphd/Ari-CORW)
 
 ### Earlier Releases
 
